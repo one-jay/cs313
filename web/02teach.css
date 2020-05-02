@@ -1,0 +1,27 @@
+div{
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid black;
+}
+#div1 {
+    background-color: lemonchiffon;
+    font-size: large;
+}
+#div2{
+    
+    background-color: palevioletred;
+    font-size: small;
+}
+#div3{
+    background-color: powderblue;
+    font-size: xx-large;
+}
+
+div:hover{
+    font-weight: bold;
+}
+
+/* only use when you need to override bootstrap
+.selector-for-some-widget {
+    box-sizing: content-box;
+} */

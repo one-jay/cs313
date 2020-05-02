@@ -1,0 +1,55 @@
+
+    body { 
+        font: 1.5em "Fira Sans", sans-serif;
+        background-color: rgb(40,44,52);
+        color: rgb(171,178,191);
+    }
+
+    h1{
+        color: rgb(223,108,117);
+    }
+    h2{
+        color: rgb(97,175,239);;
+    }
+    
+    a:link{
+        color: rgb(97,175,239);
+    }
+    a:visited{
+      color: rgb(198,120,221);
+    }
+    a:hover{
+      color: rgb(147,188,118);
+    }
+    a:active{
+      color: rgb(198,120,221);
+    }
+
+#me img{
+  float: left;
+  margin: 10px;
+
+}
+img{
+  border:3px solid rgb(97,175,239);
+
+}
+
+#family img{
+  float: right;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: rgb(51,56,66);
+}
