@@ -56,11 +56,11 @@
 
     </div>
   </main>
-
+<div class="php">
   <?php 
     echo "doing something in php!"; 
   ?>
-
+</div>
   <script src="https://kit.fontawesome.com/yourcode.js"></script>
 </body>
 </html>
