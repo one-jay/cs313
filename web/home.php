@@ -57,6 +57,10 @@
     </div>
   </main>
 
+  <?php 
+    echo "doing something in php!"; 
+  ?>
+
   <script src="https://kit.fontawesome.com/yourcode.js"></script>
 </body>
 </html>
