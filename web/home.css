@@ -56,3 +56,11 @@ td, th {
 tr:nth-child(even) {
   background-color: rgb(51,56,66);
 }
+
+form, .form{
+    margin: 0 auto;
+    padding: 1em;
+    min-width: 30%;
+    max-width: 70%;
+    border: 10px solid #aaa;
+}
