@@ -1,0 +1,56 @@
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+    /* max-width: 80%; */
+}
+
+ul{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+li, li *{
+    background-color: #eee;
+    list-style: none;
+    width: 90%;
+    max-width: 400px;
+    padding: 1em;
+    margin: 1em;
+}
+a{
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+a:hover{
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+}
+
+#cart{
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+}
+#cart a{
+    border: 1px solid red;
+    background-color: white;
+    color: red;
+    margin: 2px;
+    padding: 2px;
+}
+#cart a:hover{
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+}
+#totalAmt{
+    font-weight: bolder;
+}
+td{
+    text-align: center;
+}

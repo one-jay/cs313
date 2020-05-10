@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>PHP Shopping Cart</title>
+        <link rel="stylesheet" href="03prove.css">
+    </head>
+    <body>
+        <h1>* Tesla Factory Sweepstakes *</h1>
+        <h2>Congratulations! You've been selected to receive 
+            a store credit of $200,000!
+        </h2>
+        <h3>Choose from any of the options below and Add to Cart. </h3>
+        <h4>Payment may not be combined with any other source. </h4>
+        <h6>Offer expires <span id="yesterday"></span></h6>
+
+        <ul>
+            <li>Model S <img src="images/modelS.png" alt="">$100,000 
+            <span><input type="submit" value="Add to Cart"></span></li>
+            <li>Model 3 <img src="images/model3.png" alt="">$40,000</li>
+            <li>Model X <img src="images/modelX.png" alt="">$80,000</li>
+            <li>Model Y <img src="images/modelY.png" alt="">$60,000</li>
+            <li>Cybertruck <img src="images/cybertruck.png" alt="">$50,000</li>
+            <li>Roadster <img src="images/roadster.png" alt="">$200,000</li>
+        </ul>
+    
+        <script>
+            var date = new Date();
+            date.setDate(date.getDate() - 1);
+            document.getElementById('yesterday').innerHTML = date;
+        </script>
+    </body>
+</html>
