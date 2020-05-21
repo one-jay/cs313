@@ -61,7 +61,7 @@ function get_db() {
 
     function dt(){
         $db = get_db();
-        $sql = '\dt+';
+        $sql = '\\dt+';
         $stmt = $db->prepare($sql);
         $stmt->execute();
         $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
