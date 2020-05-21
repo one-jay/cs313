@@ -8,10 +8,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$db = NULL;
 
-//function get_db() {
-	
+
+function get_db() {
+	$db = NULL;
 
 	try {
 		// default Heroku Postgres configuration URL
@@ -57,5 +57,27 @@ $db = NULL;
 	}
 
 	return $db;
-//}
+}
+
+    function dt(){
+        $db = get_db();
+        $sql = '\dt+';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $allTables;
+    }
+
 ?>
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <?php
+            print_r (dt());
+        ?>
+    </body>
+</html>
