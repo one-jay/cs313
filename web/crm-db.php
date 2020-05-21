@@ -4,9 +4,14 @@
 * OR Heroku credentials, depending on whether the code
 * is executing at heroku.
 ***********************************************************/
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-function get_db() {
-	$db = NULL;
+$db = NULL;
+
+//function get_db() {
+	
 
 	try {
 		// default Heroku Postgres configuration URL
@@ -52,11 +57,5 @@ function get_db() {
 	}
 
 	return $db;
-}
+//}
 ?>
-<html>
-    <body>
-        success: <br>
-        <?=$db?>
-    </body>
-</html>
