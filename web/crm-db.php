@@ -54,3 +54,9 @@ function get_db() {
 	return $db;
 }
 ?>
+<html>
+    <body>
+        success: <br>
+        <?=$db?>
+    </body>
+</html>
