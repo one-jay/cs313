@@ -26,7 +26,7 @@ $id = $_GET['id'];
             <tbody>
         <?php
             $statement = $db->prepare(" SELECT * FROM contact
-                                        WHERE account = :$id ");
+                                        WHERE account = '".$id."' ");
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
