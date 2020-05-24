@@ -59,7 +59,7 @@ function get_db() {
 
 function getContactsAndAccount(){
     $db = get_db();
-    $sql = 'SELECT account.id, account.name, opportunity.id, stage 
+    $sql = 'SELECT account.id as acctId, account.name, opportunity.id, stage 
             FROM opportunity
             JOIN account ON opportunity.account = account.id';
     $stmt = $db->prepare($sql);
