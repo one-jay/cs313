@@ -29,7 +29,7 @@
 
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
-                    $account = $row['account.name'];
+                    $account = $row['name'];
                     $firstName = $row['firstname'];
                     $lastName = $row['lastname'];
                     $phone = $row['phone'];
