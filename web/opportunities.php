@@ -23,7 +23,7 @@
             </thead>
             <tbody>
             <?php
-                $sql = 'SELECT account.id as acctId, account.name, opportunity.id as oppId, stage 
+                $sql = 'SELECT account.id as accountid, account.name, opportunity.id, stage 
                         FROM opportunity
                         JOIN account ON opportunity.account = account.id';
                 $statement = $db->prepare($sql);
@@ -31,9 +31,9 @@
 
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
-                    $accountId = $row['acctId'];
+                    $accountId = $row['accountid'];
                     $account = $row['name'];
-                    $id = $row['oppId'];
+                    $id = $row['id'];
                     $stage = $row['stage'];
                     // $phone = $row['phone'];
                     // $email = $row['email'];
