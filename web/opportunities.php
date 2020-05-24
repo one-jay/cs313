@@ -31,7 +31,7 @@
 
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
-                    $accountID = $row['acctID'];
+                    $accountID = $row['acctId'];
                     $account = $row['name'];
                     $id = $row['id'];
                     $stage = $row['stage'];
