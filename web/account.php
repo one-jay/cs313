@@ -9,8 +9,7 @@ $id = $_GET['id'];
 
     </head>
     <body>
-
-
+        <h1>Account: <?=$id?> </h1>
 
         <h2>Related Contacts:</h2>
 
