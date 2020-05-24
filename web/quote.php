@@ -24,7 +24,7 @@ $id = $_GET['id'];
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT id as quotelineid, product.name, product.listprice, price, quantity
+            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.name, product.listprice, price, quantity
                                         FROM quoteline
                                         JOIN product ON quoteline.product = product.id
                                         WHERE quote = '".$id."' ");
