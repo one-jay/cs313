@@ -30,13 +30,14 @@ $db = get_db();
             {
                 // The variable "row" now holds the complete record for that
                 // row, and we can access the different values based on their name
+                $id = $row['id'];
                 $name = $row['name'];
                 $street = $row['street'];
                 $city = $row['city'];
                 $state = $row['state'];
                 $zip = $row['zip'];
 
-                echo "<tr> <td>$name</td> <td>$street</td> <td>$city</td> <td>$state</td> <td>$zip</td> </tr>";
+                echo "<a href=\"account/$id\"><tr> <td>$name</td> <td>$street</td> <td>$city</td> <td>$state</td> <td>$zip</td> </tr> </a>";
             }
         ?>
         </tbody>
