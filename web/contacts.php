@@ -23,8 +23,14 @@
             </thead>
             <tbody>
             <?php
-                $statement = $db->prepare("SELECT account.name, firstname, lastname, phone, email FROM contact
-                                            JOIN account ON contact.account = account.id");
+                $sql = 'SELECT account.name, firstname, lastname, phone, email 
+                        FROM contact
+                        JOIN account ON contact.account = account.id';
+                $statement = $db->prepare($sql);
+
+                // $statement = $db->prepare(" SELECT account.name, firstname, lastname, phone, email 
+                //                             FROM contact
+                //                             JOIN account ON contact.account = account.id");
                 $statement->execute();
 
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
