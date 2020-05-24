@@ -12,7 +12,6 @@ $id = $_GET['id'];
         <h1>Account: <?=$id?> </h1>
 
         <h2>Related Contacts:</h2>
-
         <table>
             <thead>
                 <tr>
@@ -21,7 +20,6 @@ $id = $_GET['id'];
                     <th>Phone</th>
                     <th>Email</th>
                 </tr>
-                
             </thead>
             <tbody>
         <?php
@@ -31,15 +29,37 @@ $id = $_GET['id'];
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                // The variable "row" now holds the complete record for that
-                // row, and we can access the different values based on their name
-                //$name = $row['name'];
                 $firstName = $row['firstname'];
                 $lastName = $row['lastname'];
                 $phone = $row['phone'];
                 $email = $row['email'];
 
                 echo "<tr> <td>$firstName</td> <td>$lastName</td> <td>$phone</td> <td>$email</td> </tr>";
+            }
+        ?>
+        </tbody>
+        </table>
+
+        <h2>Related Opportunities:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Opportunity ID</th>
+                    <th>Stage</th>
+                </tr>
+            </thead>
+            <tbody>
+        <?php
+            $statement = $db->prepare(" SELECT * FROM opportunity
+                                        WHERE account = '".$id."' ");
+            $statement->execute();
+
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+                $oppID = $row['id'];
+                $stage = $row['stage'];
+
+                echo "<tr> <td>$oppID</td> <td>$stage</td> </tr>";
             }
         ?>
         </tbody>
