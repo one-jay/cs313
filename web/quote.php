@@ -24,7 +24,7 @@ $id = $_GET['id'];
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT id, product.name, product.listprice, price, quantity
+            $statement = $db->prepare(" SELECT id as quotelineid, product.name, product.listprice, price, quantity
                                         FROM quoteline
                                         JOIN product ON quoteline.product = product.id
                                         WHERE quote = '".$id."' ");
@@ -32,7 +32,7 @@ $id = $_GET['id'];
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                $quoteLineId = $row['id'];
+                $quoteLineId = $row['quotelineid'];
                 $product = $row['name'];
                 $listPrice = $row['listprice'];
                 $price = $row['price'];
