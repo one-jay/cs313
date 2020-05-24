@@ -23,7 +23,7 @@
             </thead>
             <tbody>
             <?php
-                $sql = 'SELECT account.name, id, stage 
+                $sql = 'SELECT account.name, opportunity.id, stage 
                         FROM opportunity
                         JOIN account ON opportunity.account = account.id';
                 $statement = $db->prepare($sql);
@@ -37,7 +37,7 @@
                     // $phone = $row['phone'];
                     // $email = $row['email'];
 
-                    echo "<tr> <td>$account</td> <td>$id</td> <td>$stage</td> </tr>";
+                    echo "<tr> <td><a href=\"opportunity.php?id=$id\">$account</a></td> <td>$id</td> <td>$stage</td> </tr>";
                 }
             ?>
             </tbody>
