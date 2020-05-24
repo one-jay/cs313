@@ -58,7 +58,7 @@ function get_db() {
 	return $db;
 }
 
-    function dt(){
+    function getAllAccounts(){
         $db = get_db();
         $sql = 'select * from account';
         $stmt = $db->prepare($sql);
@@ -76,7 +76,23 @@ function get_db() {
     </head>
     <body>
         <?php
-            print_r (dt());
+            print_r (getAllAccounts());
+
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+                // The variable "row" now holds the complete record for that
+                // row, and we can access the different values based on their
+                // name
+                $name = $row['name'];
+                $street = $row['street'];
+                $city = $row['city'];
+                $state = $row['state'];
+                $zip = $row['zip'];
+
+                echo "<h3>Account: $name </h3><br>
+                    <p> Address: $street <br> $city, $state $zip<p>";
+            }
+
         ?>
     </body>
 </html>
