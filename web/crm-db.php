@@ -58,15 +58,17 @@ function get_db() {
 	return $db;
 }
 
-    function getAllAccounts(){
-        $db = get_db();
-        $sql = 'select * from account';
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $allTables;
-    }
+function getAllAccounts(){
+    $db = get_db();
+    $sql = 'select * from account';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $allTables;
+}
+
+
 
 ?>
 <!doctype html>
@@ -77,6 +79,9 @@ function get_db() {
     <body>
         <?php
             print_r (getAllAccounts());
+
+            $statement = $db->prepare("SELECT * FROM account");
+            $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
