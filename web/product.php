@@ -16,8 +16,7 @@ $id = $_GET['id'];
             <thead>
                 <tr>
                     <th>Quote Line ID</th>
-                    <th>Product</th>
-                    <th>List Price</th>
+                    <th>Quote</th>
                     <th>Quote Price</th>
                     <th>Quantity</th>
                 </tr>
@@ -27,7 +26,7 @@ $id = $_GET['id'];
             $statement = $db->prepare(" SELECT quoteline.id as quotelineid, quote, price, quantity
                                         FROM quoteline
                                         --JOIN product ON quoteline.product = product.id
-                                        WHERE quote = '".$id."' ");
+                                        WHERE product = '".$id."' ");
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
