@@ -37,7 +37,7 @@ $db = get_db();
                 $state = $row['state'];
                 $zip = $row['zip'];
 
-                echo "<tr> <a href=\"account.php?id=$id\"> <td>$name</td> <td>$street</td> <td>$city</td> <td>$state</td> <td>$zip</td> </a> </tr> ";
+                echo "<tr>  <td> <a href=\"account.php?id=$id\"> $name </a> </td> <td>$street</td> <td>$city</td> <td>$state</td> <td>$zip</td> </tr> ";
             }
         ?>
         </tbody>
