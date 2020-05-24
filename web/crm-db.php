@@ -80,6 +80,7 @@ function getAllAccounts(){
         <?php
             print_r (getAllAccounts());
 
+            $db = get_db();
             $statement = $db->prepare("SELECT * FROM account");
             $statement->execute();
 
