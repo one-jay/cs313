@@ -9,6 +9,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
+
 function get_db() {
 	$db = NULL;
 
@@ -57,9 +58,10 @@ function get_db() {
 	return $db;
 }
 
-function getAllAccounts(){
+function getContactsAndAccount(){
     $db = get_db();
-    $sql = 'select * from account';
+    $sql = 'SELECT account.name, firstname, lastname, phone, email FROM contact
+    JOIN account ON contact.account = account.id';
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -68,4 +70,36 @@ function getAllAccounts(){
 }
 
 
+
 ?>
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <?php
+            print_r (getContactsAndAccount());
+
+            // $db = get_db();
+            // $statement = $db->prepare("SELECT * FROM account");
+            // $statement->execute();
+
+            // while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            // {
+            //     // The variable "row" now holds the complete record for that
+            //     // row, and we can access the different values based on their
+            //     // name
+            //     $name = $row['name'];
+            //     $street = $row['street'];
+            //     $city = $row['city'];
+            //     $state = $row['state'];
+            //     $zip = $row['zip'];
+
+            //     echo "<h3>Account: $name </h3><br>
+            //         <p> Address: $street <br> $city, $state $zip<p>";
+            // }
+
+        ?>
+    </body>
+</html>
