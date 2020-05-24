@@ -59,8 +59,8 @@ function get_db() {
 
 function getContactsAndAccount(){
     $db = get_db();
-    // $sql = 'SELECT account.name, firstname, lastname, phone, email FROM contact
-    // JOIN account ON contact.account = account.id';
+    $sql = 'SELECT account.name, firstname, lastname, phone, email FROM contact
+    JOIN account ON contact.account = account.id';
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $allTables = $stmt->fetchAll(PDO::FETCH_ASSOC);
