@@ -90,9 +90,6 @@ function debugQuery(){
                 width: 100%;
             }
 
-            li {
-                float: left;
-            }
 
             li a {
                 display: block;
