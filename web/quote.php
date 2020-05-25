@@ -24,7 +24,7 @@ $id = $_GET['id'];
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.name, product.listprice, price, quantity
+            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.id as productid, product.name, product.listprice, price, quantity
                                         FROM quoteline
                                         JOIN product ON quoteline.product = product.id
                                         WHERE quote = '".$id."' ");
@@ -34,11 +34,12 @@ $id = $_GET['id'];
             {
                 $quoteLineId = $row['quotelineid'];
                 $product = $row['name'];
+                $productId = $row['productid'];
                 $listPrice = $row['listprice'];
                 $price = $row['price'];
                 $quantity = $row['quantity'];
 
-                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td>$product</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listPrice</td> <td>$price</td> <td>$quantity</td>  </tr>";
             }
         ?>
         </tbody>
