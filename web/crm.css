@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 ul {
     display: flex;
@@ -31,7 +32,6 @@ li a:hover {
     background-color: #4CAF50;
 }
 table {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }

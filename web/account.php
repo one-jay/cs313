@@ -51,16 +51,16 @@ $id = $_GET['id'];
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT * FROM opportunity
+            $statement = $db->prepare(" SELECT id as oppid, stage FROM opportunity
                                         WHERE account = '".$id."' ");
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                $oppID = $row['id'];
+                $oppId = $row['oppid'];
                 $stage = $row['stage'];
 
-                echo "<tr> <td>$oppID</td> <td>$stage</td> </tr>";
+                echo "<tr> <td><a href=\"opportunity.php?id=$oppId\">$oppId</a></td> <td>$stage</td> </tr>";
             }
         ?>
         </tbody>
