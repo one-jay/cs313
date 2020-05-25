@@ -74,7 +74,10 @@ function debugQuery(){
 <!doctype html>
 <html>
     <head>
+    <link rel="stylesheet" href="crm.css">
+
         <style>
+            
             body{
                 margin: 0;
             }
