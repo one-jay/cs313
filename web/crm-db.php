@@ -77,15 +77,16 @@ function debugQuery(){
         <style>
             body{
                 margin: 0;
-
             }
             ul {
+                display: flex;
+                
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
                 background-color: #333;
-                position: fixed;
+                
                 top: 0;
                 width: 100%;
             }
