@@ -13,12 +13,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Description</th>
                     <th>List Price</th>
-                    <!-- <th>Phone</th>
-                    <th>Email</th> -->
                 </tr>
                 
             </thead>
