@@ -23,18 +23,19 @@ $id = $_GET['id'];
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT * FROM contact
+            $statement = $db->prepare(" SELECT id as contactid, firstname, lastname, phone, email FROM contact
                                         WHERE account = '".$id."' ");
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
+                $contactId = $row['contactid'];
                 $firstName = $row['firstname'];
                 $lastName = $row['lastname'];
                 $phone = $row['phone'];
                 $email = $row['email'];
 
-                echo "<tr> <td>$firstName</td> <td>$lastName</td> <td>$phone</td> <td>$email</td> </tr>";
+                echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
             }
         ?>
         </tbody>

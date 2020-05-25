@@ -36,7 +36,7 @@ $id = $_GET['id'];
                 $price = $row['price'];
                 $quantity = $row['quantity'];
 
-                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"quoteline.php?id=$quote\">$quote</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"quote.php?id=$quote\">$quote</td> <td>$price</td> <td>$quantity</td>  </tr>";
             }
         ?>
         </tbody>
