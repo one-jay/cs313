@@ -21,38 +21,38 @@ $id = $_GET['id'];
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                // $contactId = $row['contactid'];
-                // $firstName = $row['firstname'];
-                // $lastName = $row['lastname'];
-                // $phone = $row['phone'];
-                // $email = $row['email'];
+                $name = $row['name'];
+                $street = $row['street'];
+                $city = $row['city'];
+                $state = $row['state'];
+                $zip = $row['zip'];
 
                 //echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
             }
         ?>
             <tr>
                 <th>Account ID</th>
-                <td><?=$row['id']?> </td>
+                <td><?=$id?> </td>
             </tr>
             <tr>
                 <th>Account Name</th>
-                <td><?=$row['name']?> </td>
+                <td><?=$name?> </td>
             </tr>
             <tr>
                 <th>Street</th>
-                <td><?=$row['street']?> </td>
+                <td><?=$street?> </td>
             </tr>
             <tr>
                 <th>City</th>
-                <td><?=$row['city']?> </td>
+                <td><?=$city?> </td>
             </tr>
             <tr>
                 <th>State</th>
-                <td><?=$row['state']?> </td>
+                <td><?=$state?> </td>
             </tr>
             <tr>
                 <th>Zip</th>
-                <td><?=$row['zip']?> </td>
+                <td><?=$zip?> </td>
             </tr>
         </table>
 
