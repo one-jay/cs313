@@ -9,7 +9,7 @@ $id = $_GET['id'];
 
     </head>
     <body>
-        <h1>Account: <?=$id?> </h1>
+        <!-- <h1>Account: <?=$id?> </h1> -->
 
         <h2>Account Details</h2>
         <table>
@@ -29,8 +29,21 @@ $id = $_GET['id'];
 
                 //echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
             }
+            
+            $details = array(
+                'Account ID'    => $id,
+                'Account Name'  => $name,
+                'Street'        => $street,
+                'City'          => $city,
+                'State'         => $state,
+                'Zip'           => $zip
+            );
+
+            foreach($details as $k => $v){
+                echo "<tr><th>$k</th><td>$v</td></tr>";
+            }
         ?>
-            <tr>
+            <!-- <tr>
                 <th>Account ID</th>
                 <td><?=$id?> </td>
             </tr>
@@ -53,7 +66,7 @@ $id = $_GET['id'];
             <tr>
                 <th>Zip</th>
                 <td><?=$zip?> </td>
-            </tr>
+            </tr> -->
         </table>
 
         <h2>Related Contacts:</h2>
