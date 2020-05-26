@@ -11,6 +11,51 @@ $id = $_GET['id'];
     <body>
         <h1>Account: <?=$id?> </h1>
 
+        <h2>Account Details</h2>
+        <table>
+        <?php
+            $statement = $db->prepare(" SELECT * FROM account 
+                                        WHERE id = '".$id."'
+                                        LIMIT 1 ");
+            $statement->execute();
+
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+            {
+                // $contactId = $row['contactid'];
+                // $firstName = $row['firstname'];
+                // $lastName = $row['lastname'];
+                // $phone = $row['phone'];
+                // $email = $row['email'];
+
+                //echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
+            }
+        ?>
+            <tr>
+                <th>Account ID</th>
+                <td><?=$row['id']?> </td>
+            </tr>
+            <tr>
+                <th>Account Name</th>
+                <td><?=$row['name']?> </td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td><?=$row['street']?> </td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td><?=$row['city']?> </td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td><?=$row['state']?> </td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td><?=$row['zip']?> </td>
+            </tr>
+        </table>
+
         <h2>Related Contacts:</h2>
         <table>
             <thead>
