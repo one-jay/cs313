@@ -44,7 +44,7 @@ $id = $_GET['id'];
         </table>
 
         <h2>Account Details (form)</h2>
-        <form action="updateDb()" method="post">
+        <form action="#" method="post">
 
             <input type="text" name="Account Name" value="<?=$name?>">
             <input type="text" name="Street" value="<?=$street?>">
