@@ -79,7 +79,7 @@ try
 	// Add the Scripture
 
 	// We do this by preparing the query with placeholder values
-    $query = 'INSERT INTO tablename(';
+    $query = 'INSERT INTO account(';
         foreach($_POST as $col=>$val){
             $query .= $col.',';
         }
