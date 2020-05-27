@@ -91,22 +91,22 @@ try
       //  :book, :chapter, :verse, :content
     $query .= ')';
     echo $query;
-	$statement = $db->prepare($query);
+	//$statement = $db->prepare($query);
 
 	// Now we bind the values to the placeholders. This does some nice things
 	// including sanitizing the input with regard to sql commands.
-    foreach($_POST as $col=>$val){
-        $statement->bindValue(':'.$col, $val);
-    }
+    // foreach($_POST as $col=>$val){
+    //     $statement->bindValue(':'.$col, $val);
+    // }
     // $statement->bindValue(':book', $book);
 	// $statement->bindValue(':chapter', $chapter);
 	// $statement->bindValue(':verse', $verse);
 	// $statement->bindValue(':content', $content);
 
-	$statement->execute();
+	//$statement->execute();
 
 	// get the new id
-    $scriptureId = $db->lastInsertId("scripture_id_seq");
+    //$scriptureId = $db->lastInsertId("scripture_id_seq");
 }
 catch (Exception $ex)
 {
