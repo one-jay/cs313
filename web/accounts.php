@@ -2,6 +2,29 @@
 require "crm-db.php";
 $db = get_db();
 
+if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    try{
+        $db = get_db();
+        $query = 'INSERT INTO account (name, street, city, state, zip) 
+                VALUES(:name, :street, :city, :state, :zip)';
+        $statement = $db->prepare($query);
+            $statement->bindValue(':name', $name);
+            $statement->bindValue(':street', $street);
+            $statement->bindValue(':city', $city);
+            $statement->bindValue(':state', $state);
+            $statement->bindValue(':zip', $zip);
+        $statement->execute();
+    }catch (Exception $ex){
+        echo "Error with DB. Details: $ex";
+        die();
+    }
+}
+
 ?>
 
 <html>
