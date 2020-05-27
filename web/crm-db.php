@@ -119,6 +119,12 @@ function debugQuery(){
 // }
 
 if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    
     try
     {
         $db = get_db();
