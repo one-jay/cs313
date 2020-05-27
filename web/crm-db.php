@@ -103,7 +103,7 @@ try
 	// $statement->bindValue(':verse', $verse);
 	// $statement->bindValue(':content', $content);
 
-	$statement->execute();
+	//$statement->execute();
 
 	// get the new id
     //$scriptureId = $db->lastInsertId("scripture_id_seq");
