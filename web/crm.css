@@ -5,9 +5,10 @@ body{
 h2{
     margin-top: 2em;
 }
+
+/* top nav */
 ul {
     display: flex;
-    
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -17,8 +18,6 @@ ul {
     top: 0;
     width: 100%;
 }
-
-
 li a {
     display: block;
     color: white;
@@ -26,28 +25,24 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-
-/* Change the link color to #111 (black) on hover */
 li a:hover {
     background-color: #111;
 }
 .active {
     background-color: #4CAF50;
 }
+
+/* table styling */
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
 }
-
  td,  th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
  tr:nth-child(even){background-color: #f2f2f2;}
-
  tr:hover {background-color: #ddd;}
-
  th {
   padding-top: 12px;
   padding-bottom: 12px;

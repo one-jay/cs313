@@ -9,7 +9,6 @@ $id = $_GET['id'];
 
     </head>
     <body>
-        <!-- <h1>Account: <?=$id?> </h1> -->
 
         <h2>Account Details</h2>
         <table>
@@ -26,10 +25,8 @@ $id = $_GET['id'];
                 $city = $row['city'];
                 $state = $row['state'];
                 $zip = $row['zip'];
-
-                //echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
             }
-            
+
             $details = array(
                 'Account ID'    => $id,
                 'Account Name'  => $name,
@@ -43,31 +40,16 @@ $id = $_GET['id'];
                 echo "<tr><th>$k</th><td>$v</td></tr>";
             }
         ?>
-            <!-- <tr>
-                <th>Account ID</th>
-                <td><?=$id?> </td>
-            </tr>
-            <tr>
-                <th>Account Name</th>
-                <td><?=$name?> </td>
-            </tr>
-            <tr>
-                <th>Street</th>
-                <td><?=$street?> </td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td><?=$city?> </td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <td><?=$state?> </td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td><?=$zip?> </td>
-            </tr> -->
+           
         </table>
+
+        <h2>Account Details (form)</h2>
+        <form action="updateDb()" method="post">
+
+            <input type="text" name="Account Name" value="<?=$name?>">
+            <input type="text" name="Street" value="<?=$street?>">
+            <input type="submit" value="Save Changes">
+        </form>
 
         <h2>Related Contacts:</h2>
         <table>

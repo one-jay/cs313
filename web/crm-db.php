@@ -69,6 +69,10 @@ function debugQuery(){
     return $allTables;
 }
 
+function updateDb(){
+    print_r ($_POST);
+}
+
 ?>
 
 <!doctype html>
