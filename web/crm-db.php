@@ -96,7 +96,7 @@ try
 	// Now we bind the values to the placeholders. This does some nice things
 	// including sanitizing the input with regard to sql commands.
     foreach($_POST as $col=>$val){
-        $statement->bindValue("':".$col."'", $val);
+        $statement->bindValue($col, $val);
     }
     // $statement->bindValue(':book', $book);
 	// $statement->bindValue(':chapter', $chapter);
