@@ -1,6 +1,57 @@
 <?php
 require "crm-db.php";
 $db = get_db();
+
+$name = $_POST['name'];
+$street = $_POST['street'];
+$city = $_POST['city'];
+$state = $_POST['state'];
+$zip = $_POST['zip'];
+
+try
+{
+	// Add the Scripture
+
+	// We do this by preparing the query with placeholder values
+	$query = 'INSERT INTO account (name, street, city, state, zip)
+             VALUES(:name, :street, :city, :state, :zip)';
+	$statement = $db->prepare($query);
+
+	// Now we bind the values to the placeholders. This does some nice things
+	// including sanitizing the input with regard to sql commands.
+	$statement->bindValue(':name', $name);
+	$statement->bindValue(':street', $street);
+	$statement->bindValue(':city', $city);
+    $statement->bindValue(':state', $state);
+    $statement->bindValue(':zip', $zip);
+
+	$statement->execute();
+
+	// get the new id
+	$accountId = $db->lastInsertId("account_id_seq");
+
+	// Now go through each topic id in the list from the user's checkboxes
+	// foreach ($topicIds as $topicId)
+	// {
+	// 	echo "account id: $accountId";
+
+	// 	// Again, first prepare the statement
+	// 	$statement = $db->prepare('INSERT INTO scripture_topic(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
+
+	// 	// Then, bind the values
+	// 	$statement->bindValue(':scriptureId', $scriptureId);
+	// 	$statement->bindValue(':topicId', $topicId);
+
+	// 	$statement->execute();
+	// }
+}
+catch (Exception $ex)
+{
+	// Please be aware that you don't want to output the Exception message in
+	// a production environment
+	echo "Error with DB. Details: $ex";
+	die();
+}
 ?>
 
 <html>
@@ -9,6 +60,15 @@ $db = get_db();
     </head>
     <body>
         <h2>Accounts:</h2>
+
+        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+            <input type="text" name="name" value="<?=$name?>">
+            <input type="text" name="street" value="<?=$street?>">
+            <input type="text" name="city" value="<?=$city?>">
+            <input type="text" name="state" value="<?=$state?>">
+            <input type="text" name="zip" value="<?=$zip?>">
+            <input type="submit" value="Create Account">
+        </form>
 
         <table>
             <thead>

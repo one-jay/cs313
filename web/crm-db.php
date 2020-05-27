@@ -69,56 +69,7 @@ function debugQuery(){
     return $allTables;
 }
 
-if(isset($_POST['submit'])) {
-
-    print_r ($_POST);
-
-    $db = get_db();
-
-    try
-    {
-        // Add the Scripture
-
-        // We do this by preparing the query with placeholder values
-        $query = 'UPDATE account SET ';
-            // foreach($_POST as $col=>$val){
-            //     $query .= $col. '=' .$val. ',';
-            // }
-            $query .= 'name = ' .$_POST['account_name'];
-        //book, chapter, verse, content
-            // $query .= ') VALUES(';
-            // foreach($_POST as $col=>$val){
-            //     $query .= ':'.$col.',';
-            // }
-        //  :book, :chapter, :verse, :content
-            $query .= ' WHERE id = ' .$_GET['id'];
-        echo $query;
-        $statement = $db->prepare($query);
-
-        // Now we bind the values to the placeholders. This does some nice things
-        // including sanitizing the input with regard to sql commands.
-        foreach($_POST as $col=>$val){
-            $statement->bindValue($col, $val);
-        }
-        // $statement->bindValue(':book', $book);
-        // $statement->bindValue(':chapter', $chapter);
-        // $statement->bindValue(':verse', $verse);
-        // $statement->bindValue(':content', $content);
-
-        echo $statement;
-        //$statement->execute();
-
-        // get the new id
-        //$scriptureId = $db->lastInsertId("scripture_id_seq");
-    }
-    catch (Exception $ex)
-    {
-        // Please be aware that you don't want to output the Exception message in
-        // a production environment
-        echo "Error with DB. Details: $ex";
-        die();
-    }
-}
+// //}
 
 ?>
 
