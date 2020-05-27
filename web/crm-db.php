@@ -104,7 +104,8 @@ if(isset($_POST['submit'])) {
         // $statement->bindValue(':verse', $verse);
         // $statement->bindValue(':content', $content);
 
-        $statement->execute();
+        echo $statement;
+        //$statement->execute();
 
         // get the new id
         //$scriptureId = $db->lastInsertId("scripture_id_seq");
