@@ -68,6 +68,11 @@ function debugQuery(){
 }
 
 if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
     print_r ($_POST);
     $db = get_db();
     try {
@@ -84,10 +89,15 @@ if(isset($_POST['submit'])) {
             $query .= ')';
         echo $query;
         $statement = $db->prepare($query);
-        foreach($_POST as $col=>$val){
-            if ($col == 'submit') continue;
-            $statement->bindValue("'".$col."'", $val);
-        }
+        // foreach($_POST as $col=>$val){
+        //     if ($col == 'submit') continue;
+        //     $statement->bindValue("'".$col."'", $val);
+        // }
+        $statement->bindValue(':name', $name);
+        $statement->bindValue(':street', $street);
+        $statement->bindValue(':city', $city);
+        $statement->bindValue(':state', $state);
+        $statement->bindValue(':zip', $zip);
         //print_r ($statement);
         $statement->execute();
 
