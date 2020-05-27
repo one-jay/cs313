@@ -2,6 +2,8 @@
 require "crm-db.php";
 $db = get_db();
 $id = $_GET['id'];
+
+
 ?>
 
 <html>
