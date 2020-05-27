@@ -69,7 +69,7 @@ function debugQuery(){
     return $allTables;
 }
 
-if(isset($_POST['action'])) {
+if(isset($_POST['submit'])) {
 
     print_r ($_POST);
 
