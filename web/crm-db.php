@@ -91,7 +91,7 @@ if(isset($_POST['submit'])) {
             //     $query .= ':'.$col.',';
             // }
         //  :book, :chapter, :verse, :content
-            $query .= ' WHERE id = ' .$id;
+            $query .= ' WHERE id = ' .$_GET['id'];
         echo $query;
         $statement = $db->prepare($query);
 
