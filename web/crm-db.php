@@ -81,15 +81,15 @@ try
 	// We do this by preparing the query with placeholder values
     $query = 'INSERT INTO scripture(';
     foreach($_POST as $col=>$val){
-        $query += $col.',';
+        $query .= $col.',';
     }
     //book, chapter, verse, content
-    $query += ') VALUES(';
+    $query .= ') VALUES(';
     foreach($_POST as $col=>$val){
-        $query += ':'.$val.',';
+        $query .= ':'.$val.',';
     }
       //  :book, :chapter, :verse, :content
-    $query += ')';
+    $query .= ')';
     echo $query;
 	$statement = $db->prepare($query);
 
