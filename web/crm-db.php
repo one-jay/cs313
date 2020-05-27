@@ -73,18 +73,21 @@ if(isset($_POST['submit'])) {
     try {
         $query = 'INSERT INTO account (';
             foreach($_POST as $col=>$val){
+                if ($col == 'submit') continue;
                 $query .= $col.',';
             }
             $query .= ') VALUES (';
             foreach($_POST as $col=>$val){
+                if ($col == 'submit') continue;
                 $query .= ':'.$col.',';
             }
         echo $query;
         $statement = $db->prepare($query);
         foreach($_POST as $col=>$val){
+            if ($col == 'submit') continue;
             $statement->bindValue($col, $val);
         }
-        echo $statement;
+        echo '<br>' .$statement;
         $statement->execute();
 
         // get the new id
