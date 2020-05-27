@@ -69,53 +69,54 @@ function debugQuery(){
     return $allTables;
 }
 
+if(isset($_POST['action'])) {
 
     print_r ($_POST);
 
     $db = get_db();
 
-try
-{
-	// Add the Scripture
+    try
+    {
+        // Add the Scripture
 
-	// We do this by preparing the query with placeholder values
-    $query = 'INSERT INTO account(';
-        foreach($_POST as $col=>$val){
-            $query .= $col.',';
-        }
-    //book, chapter, verse, content
-        $query .= ') VALUES(';
-        foreach($_POST as $col=>$val){
-            $query .= ':'.$col.',';
-        }
-      //  :book, :chapter, :verse, :content
-        $query .= ')';
-    echo $query;
-	$statement = $db->prepare($query);
+        // We do this by preparing the query with placeholder values
+        $query = 'INSERT INTO account(';
+            foreach($_POST as $col=>$val){
+                $query .= $col.',';
+            }
+        //book, chapter, verse, content
+            $query .= ') VALUES(';
+            foreach($_POST as $col=>$val){
+                $query .= ':'.$col.',';
+            }
+        //  :book, :chapter, :verse, :content
+            $query .= ')';
+        echo $query;
+        $statement = $db->prepare($query);
 
-	// Now we bind the values to the placeholders. This does some nice things
-	// including sanitizing the input with regard to sql commands.
-    foreach($_POST as $col=>$val){
-        $statement->bindValue($col, $val);
+        // Now we bind the values to the placeholders. This does some nice things
+        // including sanitizing the input with regard to sql commands.
+        foreach($_POST as $col=>$val){
+            $statement->bindValue($col, $val);
+        }
+        // $statement->bindValue(':book', $book);
+        // $statement->bindValue(':chapter', $chapter);
+        // $statement->bindValue(':verse', $verse);
+        // $statement->bindValue(':content', $content);
+
+        $statement->execute();
+
+        // get the new id
+        //$scriptureId = $db->lastInsertId("scripture_id_seq");
     }
-    // $statement->bindValue(':book', $book);
-	// $statement->bindValue(':chapter', $chapter);
-	// $statement->bindValue(':verse', $verse);
-	// $statement->bindValue(':content', $content);
-
-	$statement->execute();
-
-	// get the new id
-    //$scriptureId = $db->lastInsertId("scripture_id_seq");
+    catch (Exception $ex)
+    {
+        // Please be aware that you don't want to output the Exception message in
+        // a production environment
+        echo "Error with DB. Details: $ex";
+        die();
+    }
 }
-catch (Exception $ex)
-{
-	// Please be aware that you don't want to output the Exception message in
-	// a production environment
-	echo "Error with DB. Details: $ex";
-	die();
-}
-
 
 ?>
 
