@@ -80,17 +80,17 @@ if(isset($_POST['submit'])) {
         // Add the Scripture
 
         // We do this by preparing the query with placeholder values
-        $query = 'INSERT INTO account(';
+        $query = 'UPDATE account SET ';
             foreach($_POST as $col=>$val){
-                $query .= $col.',';
+                $query .= $col. '=' .$val. ',';
             }
         //book, chapter, verse, content
-            $query .= ') VALUES(';
-            foreach($_POST as $col=>$val){
-                $query .= ':'.$col.',';
-            }
+            // $query .= ') VALUES(';
+            // foreach($_POST as $col=>$val){
+            //     $query .= ':'.$col.',';
+            // }
         //  :book, :chapter, :verse, :content
-            $query .= ')';
+            $query .= ' WHERE id = ' .$id;
         echo $query;
         $statement = $db->prepare($query);
 
