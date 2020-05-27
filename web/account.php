@@ -45,7 +45,7 @@ $id = $_GET['id'];
 
         <h2>Account Details (form)</h2>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-            <input type="text" name="id" value="<?=$id?>">
+            <input type="number" name="id" value="<?=$id?>">
             <input type="text" name="Account Name" value="<?=$name?>">
             <input type="text" name="Street" value="<?=$street?>">
             <input type="submit" value="Save Changes">
