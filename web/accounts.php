@@ -34,17 +34,26 @@ if(isset($_POST['submit'])) {
     <body>
         <h2>Accounts:</h2>
 
-        <form action="" method="post">
+        <!-- <form action="" method="post">
             <input type="text" name="name" >
             <input type="text" name="street" >
             <input type="text" name="city" >
             <input type="text" name="state" >
             <input type="text" name="zip" >
             <input type="submit" name="submit" value="Create New Account">
-        </form>
+        </form> -->
 
         <table>
             <thead>
+                <form action="" method="post"></form>
+                <tr>
+                    <td><input type="text" name="name" ></td>
+                    <td><input type="text" name="street" ></td>
+                    <td><input type="text" name="city" ></td>
+                    <td><input type="text" name="state" ></td>
+                    <td><input type="text" name="zip" ></td>
+                    <td><input type="submit" name="submit" value="Create New Account"></td>
+                </tr>
                 <tr>
                     <th>Account Name</th>
                     <th>Address</th>
