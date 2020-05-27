@@ -88,7 +88,7 @@ if(isset($_POST['submit'])) {
             if ($col == 'submit') continue;
             $statement->bindValue($col, $val);
         }
-        echo '<br>' .$statement;
+        print_r ($statement);
         $statement->execute();
 
         // get the new id
