@@ -79,15 +79,15 @@ if(isset($_POST['submit'])) {
             $query .= ') VALUES (';
             foreach($_POST as $col=>$val){
                 if ($col == 'submit') continue;
-                $query .= '\''.$val.'\',';
+                $query .= ':'.$col.',';
             }
             $query .= ')';
         echo $query;
         $statement = $db->prepare($query);
-        // foreach($_POST as $col=>$val){
-        //     if ($col == 'submit') continue;
-        //     $statement->bindValue($col, $val);
-        // }
+        foreach($_POST as $col=>$val){
+            if ($col == 'submit') continue;
+            $statement->bindValue("':".$col."'", $val);
+        }
         //print_r ($statement);
         $statement->execute();
 
