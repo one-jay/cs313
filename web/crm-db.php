@@ -81,6 +81,7 @@ if(isset($_POST['submit'])) {
                 if ($col == 'submit') continue;
                 $query .= ':'.$col.',';
             }
+            $query .= ')';
         echo $query;
         $statement = $db->prepare($query);
         foreach($_POST as $col=>$val){
