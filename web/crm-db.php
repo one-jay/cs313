@@ -121,6 +121,7 @@ function debugQuery(){
 if(isset($_POST['submit'])) {
     try
     {
+        $db = get_db();
         // Add the Scripture
 
         // We do this by preparing the query with placeholder values
