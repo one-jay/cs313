@@ -81,9 +81,10 @@ if(isset($_POST['submit'])) {
 
         // We do this by preparing the query with placeholder values
         $query = 'UPDATE account SET ';
-            foreach($_POST as $col=>$val){
-                $query .= $col. '=' .$val. ',';
-            }
+            // foreach($_POST as $col=>$val){
+            //     $query .= $col. '=' .$val. ',';
+            // }
+            $query .= 'name = ' .$_POST['account_name'];
         //book, chapter, verse, content
             // $query .= ') VALUES(';
             // foreach($_POST as $col=>$val){
