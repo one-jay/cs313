@@ -64,12 +64,12 @@ if(isset($_POST['submit'])) {
         <h2>Accounts:</h2>
 
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-            <input type="text" name="name" value="<?=$name?>">
-            <input type="text" name="street" value="<?=$street?>">
-            <input type="text" name="city" value="<?=$city?>">
-            <input type="text" name="state" value="<?=$state?>">
-            <input type="text" name="zip" value="<?=$zip?>">
-            <input type="submit" value="Create Account">
+            <input type="text" name="name" >
+            <input type="text" name="street" >
+            <input type="text" name="city" >
+            <input type="text" name="state" >
+            <input type="text" name="zip" >
+            <input type="submit" value="Submit">
         </form>
 
         <table>
