@@ -4,13 +4,14 @@ $db = get_db();
 $id = $_GET['id'];
 
 if(isset($_POST['submit'])) {
-  $rowToUpdate = array('id'=>$id);
-  $res = pg_update($db, 'account', $_POST, $rowToUpdate);
-  if ($res) {
-      echo "Data is updated: $res\n";
-  } else {
-      echo "User must have sent wrong inputs\n";
-  }
+    $db = get_db();
+    $rowToUpdate = array('id'=>$id);
+    $res = pg_update($db, 'account', $_POST, $rowToUpdate);
+    if ($res) {
+        echo "Data is updated: $res\n";
+    } else {
+        echo "User must have sent wrong inputs\n";
+}
 
 // if(isset($_POST['submit'])) {
 //     $name = $_POST['name'];
