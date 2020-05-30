@@ -3,6 +3,8 @@ require "crm-db.php";
 $db = get_db();
 $id = $_GET['id']; 
 
+if ($_POST) {
+
 // update account
 if(isset($_POST['updateAccount'])) {
     // $name = $_POST['name'];
@@ -68,6 +70,9 @@ if(isset($_POST['updateAccount'])) {
             }
         }
 
+header("Location: " . $_SERVER['REQUEST_URI']);
+exit();
+}
 ?>
 
 <html>
