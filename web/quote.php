@@ -49,24 +49,24 @@ exit();
 
 </head>
 <body>
-    <h1>Opportunity: <?=$id?> </h1>
+    <h1>Quote: <?=$id?> </h1>
 
-    <h2>Opportunity Details</h2>
+    <h2>Quote Details</h2>
     <table>
     <?php
-        $statement = $db->prepare(" SELECT * FROM opportunity 
+        $statement = $db->prepare(" SELECT * FROM quote 
                                     WHERE id = '".$id."'
                                     LIMIT 1 ");
         $statement->execute();
 
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
-            $account = $row['account'];
-            $stage = $row['stage'];
+            $opportunity = $row['opportunity'];
+            $amount = $row['amount'];
         }
         $details = array(
-            'Opportunity ID'    => $id,
-            'Account'  => $account,
-            'Stage'        => $stage
+            'Quote ID'    => $id,
+            'Opportunity'  => $opportunity,
+            'Amount'        => $amount
         );
         foreach($details as $k => $v){
             echo "<tr><th>$k</th><td>$v</td></tr>";
