@@ -4,7 +4,7 @@ $db = get_db();
 $id = $_GET['id']; 
 
 // update account
-if(isset($_POST['submit'])) {
+if(isset($_POST['updateAccount'])) {
     $name = $_POST['name'];
     $street = $_POST['street'];
     $city = $_POST['city'];
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])) {
 }
 
     // create contact
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['insertContact'])) {
         try{
             $db = get_db();
             $query = 'INSERT INTO contact (firstname, lastname, phone, email, account) 
@@ -101,7 +101,7 @@ if(isset($_POST['submit'])) {
             <input type="text" name="city" value="<?=$city?>">
             <input type="text" name="state" value="<?=$state?>">
             <input type="text" name="zip" value="<?=$zip?>">
-            <input type="submit" name="submit" value="Update Account">
+            <input type="submit" name="updateAccount" value="Update Account">
         </form>
 
         <h2>Create New Contact</h2>
@@ -111,7 +111,7 @@ if(isset($_POST['submit'])) {
             <input type="text" name="phone" value="Phone">
             <input type="text" name="email" value="Email">
             <input type="text" name="account" value="<?=$id?>" class="hide">
-            <input type="submit" name="submit" value="Create New Contact">
+            <input type="submit" name="insertContact" value="Create New Contact">
         </form>
     
         <h2>Related Contacts:</h2>
