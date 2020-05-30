@@ -99,7 +99,7 @@ exit();
                 $price = $row['price'];
                 $quantity = $row['quantity'];
 
-                echo "<tr> <td><a href=\"quote.php?id=$quoteId\">$quote</td> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td>  <td>$listprice</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                echo "<tr> <td><a href=\"quote.php?id=$quoteId\">$quoteId</td> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td>  <td>$listprice</td> <td>$price</td> <td>$quantity</td>  </tr>";
             }
         ?>
         </tbody>
