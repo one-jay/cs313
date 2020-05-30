@@ -77,8 +77,8 @@ exit();
         <table>
             <thead>
                 <tr>
+                    <th>Quote</th>
                     <th>Quote Line ID</th>
-                    <th>Product</th>
                     <th>List Price</th>
                     <th>Quote Price</th>
                     <th>Quantity</th>
@@ -86,22 +86,20 @@ exit();
             </thead>
             <tbody>
         <?php
-            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.id as productid, product.name, product.listprice, price, quantity
+            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, quote.id as quoteid, price, quantity
                                         FROM quoteline
-                                        JOIN product ON quoteline.product = product.id
-                                        WHERE quote = '".$id."' ");
+                                        JOIN quote ON quoteline.quote = quote.id
+                                        WHERE product = '".$id."' ");
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
+                $quoteId = $row['quoteid'];
                 $quoteLineId = $row['quotelineid'];
-                $product = $row['name'];
-                $productId = $row['productid'];
-                $listprice = $row['listprice'];
                 $price = $row['price'];
                 $quantity = $row['quantity'];
 
-                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listprice</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                echo "<tr> <td><a href=\"quote.php?id=$quoteId\">$quote</td> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td>  <td>$listprice</td> <td>$price</td> <td>$quantity</td>  </tr>";
             }
         ?>
         </tbody>
