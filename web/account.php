@@ -84,21 +84,14 @@ if(isset($_POST['submit'])) {
         </table>
 
         <h2>Account Details (form)</h2>
-        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
-            <input type="number" name="id" value="<?=$id?>">
-            <input type="text" name="Account Name" value="<?=$name?>">
-            <input type="text" name="Street" value="<?=$street?>">
-            <input type="submit" name="submit" value="Save Changes">
-        </form>
-
         <form action="" method="post">
             <input type="text" name="id" value="<?=$id?>">
-            <input type="text" name="name" >
-            <input type="text" name="street" >
-            <input type="text" name="city" >
-            <input type="text" name="state" >
-            <input type="text" name="zip" >
-            <input type="submit" name="submit" value="Create New Account">
+            <input type="text" name="name" value="<?=$name?>">
+            <input type="text" name="street" value="<?=$street?>">
+            <input type="text" name="city" value="<?=$city?>">
+            <input type="text" name="state" value="<?=$state?>">
+            <input type="text" name="zip" value="<?=$zip?>">
+            <input type="submit" name="submit" value="Update Account">
         </form>
 
         <h2>Related Contacts:</h2>
