@@ -81,10 +81,11 @@ if(isset($_POST['submit'])) {
             <input type="number" name="id" value="<?=$id?>">
             <input type="text" name="Account Name" value="<?=$name?>">
             <input type="text" name="Street" value="<?=$street?>">
-            <input type="submit" value="Save Changes">
+            <input type="submit" name="submit" value="Save Changes">
         </form>
 
         <form action="" method="post">
+            <input type="text" name="id" value="<?=$id?>">
             <input type="text" name="name" >
             <input type="text" name="street" >
             <input type="text" name="city" >
