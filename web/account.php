@@ -2,38 +2,32 @@
 require "crm-db.php";
 $db = get_db();
 $id = $_GET['id']; 
-
 if ($_POST) {
 
-// update account
-if(isset($_POST['updateAccount'])) {
-    // $name = $_POST['name'];
-    // $street = $_POST['street'];
-    // $city = $_POST['city'];
-    // $state = $_POST['state'];
-    // $zip = $_POST['zip'];
-    try{
-        $db = get_db();
-        $query = 'UPDATE account SET
-                        name    = :name,
-                        street  = :street,
-                        city    = :city,
-                        state   = :state,
-                        zip     = :zip
-                    WHERE id = :id';
-        $statement = $db->prepare($query);
-            $statement->bindValue(':id', $id);
-            $statement->bindValue(':name', $_POST['name']);
-            $statement->bindValue(':street', $_POST['street']);
-            $statement->bindValue(':city', $_POST['city']);
-            $statement->bindValue(':state', $_POST['state']);
-            $statement->bindValue(':zip', $_POST['zip']);
-        $statement->execute();
-    }catch (Exception $ex){
-        echo "Error with DB. Details: $ex";
-        die();
+    // update account
+    if(isset($_POST['updateAccount'])) {
+        try{
+            $db = get_db();
+            $query = 'UPDATE account SET
+                            name    = :name,
+                            street  = :street,
+                            city    = :city,
+                            state   = :state,
+                            zip     = :zip
+                        WHERE id = :id';
+            $statement = $db->prepare($query);
+                $statement->bindValue(':id', $id);
+                $statement->bindValue(':name', $_POST['name']);
+                $statement->bindValue(':street', $_POST['street']);
+                $statement->bindValue(':city', $_POST['city']);
+                $statement->bindValue(':state', $_POST['state']);
+                $statement->bindValue(':zip', $_POST['zip']);
+            $statement->execute();
+        }catch (Exception $ex){
+            echo "Error with DB. Details: $ex";
+            die();
+        }
     }
-}
 
     // create contact
     if(isset($_POST['insertContact'])) {
@@ -54,24 +48,24 @@ if(isset($_POST['updateAccount'])) {
         }
     }
 
-        // create opportunity
-        if(isset($_POST['insertOpp'])) {
-            try{
-                $db = get_db();
-                $query = 'INSERT INTO opportunity (account, stage) 
-                        VALUES(:account, :stage)';
-                $statement = $db->prepare($query);
-                    $statement->bindValue(':account', $_POST['account']);
-                    $statement->bindValue(':stage', $_POST['stage']);
-                $statement->execute();
-            }catch (Exception $ex){
-                echo "Error with DB. Details: $ex";
-                die();
-            }
+    // create opportunity
+    if(isset($_POST['insertOpp'])) {
+        try{
+            $db = get_db();
+            $query = 'INSERT INTO opportunity (account, stage) 
+                    VALUES(:account, :stage)';
+            $statement = $db->prepare($query);
+                $statement->bindValue(':account', $_POST['account']);
+                $statement->bindValue(':stage', $_POST['stage']);
+            $statement->execute();
+        }catch (Exception $ex){
+            echo "Error with DB. Details: $ex";
+            die();
         }
+    }
 
-header("Location: " . $_SERVER['REQUEST_URI']);
-exit();
+    header("Location: " . $_SERVER['REQUEST_URI']);
+    exit();
 }
 ?>
 
