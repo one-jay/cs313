@@ -4,6 +4,37 @@ $db = get_db();
 $id = $_GET['id'];
 
 
+  $rowToUpdate = array('id'=>$id);
+  $res = pg_update($db, 'account', $_POST, $rowToUpdate);
+  if ($res) {
+      echo "Data is updated: $res\n";
+  } else {
+      echo "User must have sent wrong inputs\n";
+  }
+
+if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    try{
+        $db = get_db();
+        $query = 'INSERT INTO account (name, street, city, state, zip) 
+                VALUES(:name, :street, :city, :state, :zip)';
+        $statement = $db->prepare($query);
+            $statement->bindValue(':name', $name);
+            $statement->bindValue(':street', $street);
+            $statement->bindValue(':city', $city);
+            $statement->bindValue(':state', $state);
+            $statement->bindValue(':zip', $zip);
+        $statement->execute();
+    }catch (Exception $ex){
+        echo "Error with DB. Details: $ex";
+        die();
+    }
+}
+
 ?>
 
 <html>
@@ -51,6 +82,15 @@ $id = $_GET['id'];
             <input type="text" name="Account Name" value="<?=$name?>">
             <input type="text" name="Street" value="<?=$street?>">
             <input type="submit" value="Save Changes">
+        </form>
+
+        <form action="" method="post">
+            <input type="text" name="name" >
+            <input type="text" name="street" >
+            <input type="text" name="city" >
+            <input type="text" name="state" >
+            <input type="text" name="zip" >
+            <input type="submit" name="submit" value="Create New Account">
         </form>
 
         <h2>Related Contacts:</h2>
