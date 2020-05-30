@@ -1,25 +1,29 @@
 <?php
 require "crm-db.php";
 $db = get_db();
-
-if(isset($_POST['submit'])) {
-    try{
-        $db = get_db();
-        $query = 'INSERT INTO account (name, street, city, state, zip) 
-                VALUES(:name, :street, :city, :state, :zip)';
-        $statement = $db->prepare($query);
-            $statement->bindValue(':name', $_POST['name']);
-            $statement->bindValue(':street', $_POST['street']);
-            $statement->bindValue(':city', $_POST['city']);
-            $statement->bindValue(':state', $_POST['state']);
-            $statement->bindValue(':zip', $_POST['zip']);
-        $statement->execute();
-    }catch (Exception $ex){
-        echo "Error with DB. Details: $ex";
-        die();
+if ($_POST) {
+        
+    if(isset($_POST['submit'])) {
+        try{
+            $db = get_db();
+            $query = 'INSERT INTO account (name, street, city, state, zip) 
+                    VALUES(:name, :street, :city, :state, :zip)';
+            $statement = $db->prepare($query);
+                $statement->bindValue(':name', $_POST['name']);
+                $statement->bindValue(':street', $_POST['street']);
+                $statement->bindValue(':city', $_POST['city']);
+                $statement->bindValue(':state', $_POST['state']);
+                $statement->bindValue(':zip', $_POST['zip']);
+            $statement->execute();
+        }catch (Exception $ex){
+            echo "Error with DB. Details: $ex";
+            die();
+        }
     }
-}
 
+header("Location: " . $_SERVER['REQUEST_URI']);
+exit();
+}
 ?>
 
 <html>
