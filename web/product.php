@@ -9,8 +9,8 @@ if(isset($_POST['updateProduct'])) {
     try{
         $db = get_db();
         $query = 'UPDATE product SET
-                        name  = :name
-                        description = :description
+                        name  = :name,
+                        description = :description,
                         listprice = :listprice
                     WHERE id = :id';
         $statement = $db->prepare($query);
