@@ -101,7 +101,7 @@ exit();
                 $price = $row['price'];
                 $quantity = $row['quantity'];
 
-                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listPrice</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listprice</td> <td>$price</td> <td>$quantity</td>  </tr>";
             }
         ?>
         </tbody>
