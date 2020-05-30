@@ -3,11 +3,6 @@ require "crm-db.php";
 $db = get_db();
 
 if(isset($_POST['submit'])) {
-    // $name = $_POST['name'];
-    // $street = $_POST['street'];
-    // $city = $_POST['city'];
-    // $state = $_POST['state'];
-    // $zip = $_POST['zip'];
     try{
         $db = get_db();
         $query = 'INSERT INTO account (name, street, city, state, zip) 

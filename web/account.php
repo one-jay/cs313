@@ -1,18 +1,9 @@
 <?php
 require "crm-db.php";
 $db = get_db();
-$id = $_GET['id'];
+$id = $_GET['id']; 
 
-// if(isset($_POST['submit'])) {
-//     $db = get_db();
-//     $rowToUpdate = array('id'=>$id);
-//     $res = pg_update($db, 'account', $_POST, $rowToUpdate);
-//     if ($res) {
-//         echo "Data is updated: $res\n";
-//     } else {
-//         echo "User must have sent wrong inputs\n";
-//     }   
-
+// update account
 if(isset($_POST['submit'])) {
     $name = $_POST['name'];
     $street = $_POST['street'];
@@ -41,6 +32,25 @@ if(isset($_POST['submit'])) {
         die();
     }
 }
+
+    // create contact
+    if(isset($_POST['submit'])) {
+        try{
+            $db = get_db();
+            $query = 'INSERT INTO contact (firstname, lastname, phone, email, account) 
+                    VALUES(:firstname, :lastname, :phone, :email, :account)';
+            $statement = $db->prepare($query);
+                $statement->bindValue(':firstname', $_POST['firstname']);
+                $statement->bindValue(':lastname', $_POST['lastname']);
+                $statement->bindValue(':phone', $_POST['phone']);
+                $statement->bindValue(':email', $_POST['email']);
+                $statement->bindValue(':account', $_POST['account']);
+            $statement->execute();
+        }catch (Exception $ex){
+            echo "Error with DB. Details: $ex";
+            die();
+        }
+    }
 
 ?>
 
@@ -83,7 +93,7 @@ if(isset($_POST['submit'])) {
            
         </table>
 
-        <h2>Account Details (form)</h2>
+        <h2>Update Account</h2>
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
             <input type="text" name="name" value="<?=$name?>">
@@ -94,6 +104,16 @@ if(isset($_POST['submit'])) {
             <input type="submit" name="submit" value="Update Account">
         </form>
 
+        <h2>Create New Contact</h2>
+        <form action="" method="post">
+            <input type="text" name="firstname" value="First Name">
+            <input type="text" name="lastname" value="Last Name">
+            <input type="text" name="phone" value="Phone">
+            <input type="text" name="email" value="Email">
+            <input type="text" name="account" value="<?=$id?>" class="hide">
+            <input type="submit" name="submit" value="Create New Contact">
+        </form>
+    
         <h2>Related Contacts:</h2>
         <table>
             <thead>
