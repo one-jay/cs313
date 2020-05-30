@@ -5,27 +5,27 @@ $id = $_GET['id'];
 
 // update account
 if(isset($_POST['updateAccount'])) {
-    $name = $_POST['name'];
-    $street = $_POST['street'];
-    $city = $_POST['city'];
-    $state = $_POST['state'];
-    $zip = $_POST['zip'];
+    // $name = $_POST['name'];
+    // $street = $_POST['street'];
+    // $city = $_POST['city'];
+    // $state = $_POST['state'];
+    // $zip = $_POST['zip'];
     try{
         $db = get_db();
         $query = 'UPDATE account SET
-                        name = :name,
-                        street = :street,
-                        city = :city,
-                        state = :state,
-                        zip = :zip
+                        name    = :name,
+                        street  = :street,
+                        city    = :city,
+                        state   = :state,
+                        zip     = :zip
                     WHERE id = :id';
         $statement = $db->prepare($query);
             $statement->bindValue(':id', $id);
-            $statement->bindValue(':name', $name);
-            $statement->bindValue(':street', $street);
-            $statement->bindValue(':city', $city);
-            $statement->bindValue(':state', $state);
-            $statement->bindValue(':zip', $zip);
+            $statement->bindValue(':name', $_POST['name']);
+            $statement->bindValue(':street', $_POST['street']);
+            $statement->bindValue(':city', $_POST['city']);
+            $statement->bindValue(':state', $_POST['state']);
+            $statement->bindValue(':zip', $_POST['zip']);
         $statement->execute();
     }catch (Exception $ex){
         echo "Error with DB. Details: $ex";
@@ -51,6 +51,22 @@ if(isset($_POST['updateAccount'])) {
             die();
         }
     }
+
+        // create opportunity
+        if(isset($_POST['insertOpp'])) {
+            try{
+                $db = get_db();
+                $query = 'INSERT INTO opportunity (account, stage) 
+                        VALUES(:account, :stage)';
+                $statement = $db->prepare($query);
+                    $statement->bindValue(':account', $_POST['account']);
+                    $statement->bindValue(':stage', $_POST['stage']);
+                $statement->execute();
+            }catch (Exception $ex){
+                echo "Error with DB. Details: $ex";
+                die();
+            }
+        }
 
 ?>
 
@@ -106,11 +122,11 @@ if(isset($_POST['updateAccount'])) {
 
         <h2>Create New Contact</h2>
         <form action="" method="post">
+            <input type="text" name="account" value="<?=$id?>" class="hide">
             <input type="text" name="firstname" value="First Name">
             <input type="text" name="lastname" value="Last Name">
             <input type="text" name="phone" value="Phone">
             <input type="text" name="email" value="Email">
-            <input type="text" name="account" value="<?=$id?>" class="hide">
             <input type="submit" name="insertContact" value="Create New Contact">
         </form>
     
@@ -143,6 +159,13 @@ if(isset($_POST['updateAccount'])) {
         ?>
         </tbody>
         </table>
+
+        <h2>Create New Opportunity</h2>
+        <form action="" method="post">
+            <input type="text" name="account" value="<?=$id?>" class="hide">
+            <input type="text" name="stage" value="New">
+            <input type="submit" name="insertOpp" value="Create New Opportunity">
+        </form>
 
         <h2>Related Opportunities:</h2>
         <table>
