@@ -5,6 +5,9 @@ body{
 h2{
     margin-top: 2em;
 }
+.hide{
+    display: none;
+}
 
 /* top nav */
 ul {
