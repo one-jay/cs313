@@ -3,37 +3,43 @@ require "crm-db.php";
 $db = get_db();
 $id = $_GET['id'];
 
-if(isset($_POST['submit'])) {
-    $db = get_db();
-    $rowToUpdate = array('id'=>$id);
-    $res = pg_update($db, 'account', $_POST, $rowToUpdate);
-    if ($res) {
-        echo "Data is updated: $res\n";
-    } else {
-        echo "User must have sent wrong inputs\n";
-}
-
 // if(isset($_POST['submit'])) {
-//     $name = $_POST['name'];
-//     $street = $_POST['street'];
-//     $city = $_POST['city'];
-//     $state = $_POST['state'];
-//     $zip = $_POST['zip'];
-//     try{
-//         $db = get_db();
-//         $query = 'INSERT INTO account (name, street, city, state, zip) 
-//                 VALUES(:name, :street, :city, :state, :zip)';
-//         $statement = $db->prepare($query);
-//             $statement->bindValue(':name', $name);
-//             $statement->bindValue(':street', $street);
-//             $statement->bindValue(':city', $city);
-//             $statement->bindValue(':state', $state);
-//             $statement->bindValue(':zip', $zip);
-//         $statement->execute();
-//     }catch (Exception $ex){
-//         echo "Error with DB. Details: $ex";
-//         die();
-//     }
+//     $db = get_db();
+//     $rowToUpdate = array('id'=>$id);
+//     $res = pg_update($db, 'account', $_POST, $rowToUpdate);
+//     if ($res) {
+//         echo "Data is updated: $res\n";
+//     } else {
+//         echo "User must have sent wrong inputs\n";
+//     }   
+
+if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $street = $_POST['street'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    try{
+        $db = get_db();
+        $query = 'UPDATE account SET
+                        name = :name,
+                        street = :street,
+                        city = :city,
+                        state = :state,
+                        zip = :zip
+                    WHERE id = :id';
+        $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id);
+            $statement->bindValue(':name', $name);
+            $statement->bindValue(':street', $street);
+            $statement->bindValue(':city', $city);
+            $statement->bindValue(':state', $state);
+            $statement->bindValue(':zip', $zip);
+        $statement->execute();
+    }catch (Exception $ex){
+        echo "Error with DB. Details: $ex";
+        die();
+    }
 }
 
 ?>
