@@ -9,12 +9,10 @@ if ($_POST) {
         try{
             $db = get_db();
             $query = 'UPDATE opportunity SET
-                            name    = :name,
                             stage  = :stage
                         WHERE id = :id';
             $statement = $db->prepare($query);
                 $statement->bindValue(':id', $id);
-                $statement->bindValue(':name', $_POST['name']);
                 $statement->bindValue(':stage', $_POST['stage']);
             $statement->execute();
         }catch (Exception $ex){
@@ -60,12 +58,12 @@ if ($_POST) {
             $statement->execute();
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
-                $name = $row['name'];
+                $account = $row['account'];
                 $stage = $row['stage'];
             }
             $details = array(
                 'Opportunity ID'    => $id,
-                'Account Name'  => $name,
+                'Account'  => $account,
                 'Stage'        => $stage
             );
             foreach($details as $k => $v){
@@ -78,7 +76,7 @@ if ($_POST) {
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
             <input type="text" name="stage" value="<?=$stage?>">
-            <input type="submit" name="updateOpp" value="Update Account">
+            <input type="submit" name="updateOpp" value="Update Opportunity">
         </form>
 
         <h2>Create New Quote</h2>

@@ -2,14 +2,93 @@
 require "crm-db.php";
 $db = get_db();
 $id = $_GET['id'];
+if ($_POST) {
+
+// update opportunity
+if(isset($_POST['updateQuote'])) {
+    try{
+        $db = get_db();
+        $query = 'UPDATE quote SET
+                        amount  = :amount
+                    WHERE id = :id';
+        $statement = $db->prepare($query);
+            $statement->bindValue(':id', $id);
+            $statement->bindValue(':amount', $_POST['amount']);
+        $statement->execute();
+    }catch (Exception $ex){
+        echo "Error with DB. Details: $ex";
+        die();
+    }
+}
+
+// create quote line
+if(isset($_POST['insertQuoteLine'])) {
+    try{
+        $db = get_db();
+        $query = 'INSERT INTO quoteline (quote, product, price, quantity) 
+                VALUES(:quote, :product, :price, :quantity)';
+        $statement = $db->prepare($query);
+            $statement->bindValue(':quote', $_POST['quote']);
+            $statement->bindValue(':product', $_POST['product']);
+            $statement->bindValue(':price', $_POST['price']);
+            $statement->bindValue(':quantity', $_POST['quantity']);
+        $statement->execute();
+    }catch (Exception $ex){
+        echo "Error with DB. Details: $ex";
+        die();
+    }
+}
+
+header("Location: " . $_SERVER['REQUEST_URI']);
+exit();
+}
 ?>
 
 <html>
-    <head>
+<head>
 
-    </head>
-    <body>
-        <h1>Quote: <?=$id?> </h1>
+</head>
+<body>
+    <h1>Opportunity: <?=$id?> </h1>
+
+    <h2>Opportunity Details</h2>
+    <table>
+    <?php
+        $statement = $db->prepare(" SELECT * FROM opportunity 
+                                    WHERE id = '".$id."'
+                                    LIMIT 1 ");
+        $statement->execute();
+
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
+            $account = $row['account'];
+            $stage = $row['stage'];
+        }
+        $details = array(
+            'Opportunity ID'    => $id,
+            'Account'  => $account,
+            'Stage'        => $stage
+        );
+        foreach($details as $k => $v){
+            echo "<tr><th>$k</th><td>$v</td></tr>";
+        }
+    ?>
+    </table>
+
+    <h2>Update Quote</h2>
+    <form action="" method="post">
+        <!-- <input type="text" name="id" value="<?=$id?>"> -->
+        <input type="text" name="amount" value="<?=$amount?>">
+        <input type="submit" name="updateQuote" value="Update Quote">
+    </form>
+
+    <h2>Create New Quote Line</h2>
+    <form action="" method="post">
+        <input type="text" name="quote" value="<?=$id?>" class="hide">
+        <input type="text" name="product" value="Product">
+        <input type="text" name="price" value="Price">
+        <input type="text" name="quantity" value="quantity">
+        <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
+    </form>
 
         <h2> Quote Lines:</h2>
         <table>
