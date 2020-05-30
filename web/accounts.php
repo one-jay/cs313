@@ -35,11 +35,11 @@ if(isset($_POST['submit'])) {
         <h2>Accounts:</h2>
 
         <form action="" method="post">
-            <input type="text" name="name" >
-            <input type="text" name="street" >
-            <input type="text" name="city" >
-            <input type="text" name="state" >
-            <input type="text" name="zip" >
+            <input type="text" name="name" value="Account Name">
+            <input type="text" name="street" value="Street">
+            <input type="text" name="city" value="City">
+            <input type="text" name="state" value="State">
+            <input type="text" name="zip" value="Zip">
             <input type="submit" name="submit" value="Create New Account">
         </form>
 
