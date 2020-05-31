@@ -23,7 +23,7 @@
             </thead>
             <tbody>
             <?php
-                $sql = 'SELECT id as contactid, account.id as accountid, account.name, firstname, lastname, phone, email 
+                $sql = 'SELECT contact.id as contactid, account, account.name as name, firstname, lastname, phone, email 
                         FROM contact
                         JOIN account ON contact.account = account.id';
                 $statement = $db->prepare($sql);
@@ -32,7 +32,7 @@
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
                     $contactid = $row['contactid'];
-                    $accountid = $row['accountid'];
+                    $accountid = $row['account'];
                     $account = $row['name'];
                     $firstName = $row['firstname'];
                     $lastName = $row['lastname'];
