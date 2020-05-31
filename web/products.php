@@ -41,9 +41,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Product Name</th>
-                    <th>Description</th>
-                    <th>List Price</th>
+                    <th onclick="sortTable(productsTable,0)">Product Name</th>
+                    <th onclick="sortTable(productsTable,0)">Description</th>
+                    <th onclick="sortTable(productsTable,0)">List Price</th>
                 </tr>
                 
             </thead>
@@ -67,5 +67,8 @@
             </tbody>
         </table>
 
+        <script>
+            var productsTable = document.getElementById("productsTable");
+        </script>
     </body>
 </html>
