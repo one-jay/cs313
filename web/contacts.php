@@ -13,11 +13,11 @@
         <table>
             <thead>
                 <tr>
-                    <th onclick="sortTable(contactsTable,0)>Account Name</th>
-                    <th onclick="sortTable(contactsTable,1)>First Name</th>
-                    <th onclick="sortTable(contactsTable,2)>Last Name</th>
-                    <th onclick="sortTable(contactsTable,3)>Phone</th>
-                    <th onclick="sortTable(contactsTable,4)>Email</th>
+                    <th onclick="sortTable(contactsTable,0)">Account Name</th>
+                    <th onclick="sortTable(contactsTable,1)">First Name</th>
+                    <th onclick="sortTable(contactsTable,2)">Last Name</th>
+                    <th onclick="sortTable(contactsTable,3)">Phone</th>
+                    <th onclick="sortTable(contactsTable,4)">Email</th>
                 </tr>
                 
             </thead>
