@@ -39,7 +39,7 @@
                     $phone = $row['phone'];
                     $email = $row['email'];
 
-                    echo "<tr> <td><a href=\"account.php?id=$accountid\"> $account </a></td> <td><a href=\"contact.php?id=$contactid\"> $firstname </a></td> <td><a href=\"contact.php?id=$contactid\"> $lastname </a></td> <td>$phone</td> <td>$email</td> </tr>";
+                    echo "<tr> <td><a href=\"account.php?id=$accountid\"> $account </a></td> <td><a href=\"contact.php?id=$contactid\"> $firstName </a></td> <td><a href=\"contact.php?id=$contactid\"> $lastName </a></td> <td>$phone</td> <td>$email</td> </tr>";
                 }
             ?>
             </tbody>
