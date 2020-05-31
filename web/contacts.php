@@ -13,11 +13,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>Account Name</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
+                    <th onclick="sortTable(contactsTable,0)>Account Name</th>
+                    <th onclick="sortTable(contactsTable,1)>First Name</th>
+                    <th onclick="sortTable(contactsTable,2)>Last Name</th>
+                    <th onclick="sortTable(contactsTable,3)>Phone</th>
+                    <th onclick="sortTable(contactsTable,4)>Email</th>
                 </tr>
                 
             </thead>
@@ -45,5 +45,8 @@
             </tbody>
         </table>
 
+        <script>
+            var contactsTable = document.getElementById("contactsTable");
+        </script>
     </body>
 </html>
