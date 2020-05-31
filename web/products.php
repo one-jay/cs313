@@ -38,7 +38,7 @@
             <input type="submit" name="submit" value="Create New Product">
         </form>
 
-        <table>
+        <table id="productsTable">
             <thead>
                 <tr>
                     <th onclick="sortTable(productsTable,0)">Product Name</th>

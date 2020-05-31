@@ -10,7 +10,7 @@
     <body>
         <h2>Contacts:</h2>
 
-        <table>
+        <table id="contactsTable">
             <thead>
                 <tr>
                     <th onclick="sortTable(contactsTable,0)">Account Name</th>
