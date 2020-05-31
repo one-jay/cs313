@@ -40,7 +40,7 @@ table {
   border-collapse: collapse;
   width: 90%;
 }
- td,  th {
+ td,  th, input {
   border: 1px solid #ddd;
   padding: 8px;
 }
