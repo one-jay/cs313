@@ -31,6 +31,7 @@
 
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
+                    $contactid = $row['contactid'];
                     $accountid = $row['accountid'];
                     $account = $row['name'];
                     $firstName = $row['firstname'];
@@ -38,7 +39,7 @@
                     $phone = $row['phone'];
                     $email = $row['email'];
 
-                    echo "<tr> <td><a href=\"account.php?id=$accountid\"> $account </a></td> <td><a href=\"contact.php?id=$id\"> $firstname </a></td> <td><a href=\"contact.php?id=$id\"> $lastname </a></td> <td>$phone</td> <td>$email</td> </tr>";
+                    echo "<tr> <td><a href=\"account.php?id=$accountid\"> $account </a></td> <td><a href=\"contact.php?id=$contactid\"> $firstname </a></td> <td><a href=\"contact.php?id=$contactid\"> $lastname </a></td> <td>$phone</td> <td>$email</td> </tr>";
                 }
             ?>
             </tbody>
