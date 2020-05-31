@@ -42,14 +42,14 @@ exit();
             <input type="submit" name="submit" value="Create New Account">
         </form>
 
-        <table>
+        <table id="acctsTable">
             <thead>
                 <tr>
-                    <th>Account Name</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip</th>
+                    <th onclick="sortTable(acctsTable,0)">Account Name</th>
+                    <th onclick="sortTable(acctsTable,1)">Address</th>
+                    <th onclick="sortTable(acctsTable,2)">City</th>
+                    <th onclick="sortTable(acctsTable,3)">State</th>
+                    <th onclick="sortTable(acctsTable,4)">Zip</th>
                 </tr>
                 
             </thead>
@@ -75,5 +75,8 @@ exit();
         </tbody>
         </table>
 
+        <script>
+            var acctsTable = document.getElementById("acctsTable");
+        </script>
     </body>
 </html>
