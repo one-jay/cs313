@@ -2,6 +2,9 @@ body{
     margin: 0;
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
+main{
+    margin: 0 auto;
+}
 h2{
     margin-top: 2em;
 }

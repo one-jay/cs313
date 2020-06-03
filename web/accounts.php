@@ -31,6 +31,7 @@ exit();
 
     </head>
     <body>
+    <main>
         <h2>Accounts:</h2>
 
         <form action="" method="post">
@@ -74,7 +75,7 @@ exit();
         ?>
         </tbody>
         </table>
-
+        </main>
         <script>
             var acctsTable = document.getElementById("acctsTable");
         </script>
