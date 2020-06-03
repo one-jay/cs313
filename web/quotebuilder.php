@@ -34,10 +34,10 @@ if ($_POST) {
     </head>
     <body>
     <form action="" method="post">
-        <input type="text" name="opportunity" value="<?=$id?>" class="hide">
+        <input type="text" name="opportunity" value="<?=$id?>">
         <input type="text" name="amount" value="Amount">
         
-        <table id="productsTable">
+        <!-- <table id="productsTable">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -74,7 +74,7 @@ if ($_POST) {
                 }
             ?>
             </tbody>
-        </table>
+        </table> -->
         
         <input type="submit" name="insertQuotePlusLines" value="Create New Quote with Lines">
     </form>
