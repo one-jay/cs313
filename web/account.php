@@ -75,7 +75,7 @@ if ($_POST) {
     </head>
     <body>
 
-        <h2>Account Details</h2>
+        <h1>Account Details</h1>
         <table>
         <?php
             $statement = $db->prepare(" SELECT * FROM account 
@@ -108,7 +108,7 @@ if ($_POST) {
            
         </table>
 
-        <h2>Update Account</h2>
+        <h3>Update Account</h3>
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
             <input type="text" name="name" value="<?=$name?>">
@@ -150,7 +150,7 @@ if ($_POST) {
             </tbody>
             </table>
 
-            <h2>Create New Contact</h2>
+            <h3>Create New Contact</h3>
             <form action="" method="post">
                 <input type="text" name="account" value="<?=$id?>" class="hide">
                 <input type="text" name="firstname" value="First Name">

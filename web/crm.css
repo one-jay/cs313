@@ -7,11 +7,10 @@ main{
 }
 .related{
     background-color: #eee;
-    margin: 1em;
+    margin: .5em;
+    padding: .5em;
 }
-h2{
-    margin-top: 2em;
-}
+
 .hide{
     display: none;
 }
