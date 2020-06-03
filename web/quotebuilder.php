@@ -5,18 +5,17 @@
 if ($_POST) {
 
     // insert quote with quotelines
-    if(isset($_POST['updateQuoteLine'])) {
+    if(isset($_POST['Create New Quote with Lines'])) {
         try{
             $db = get_db();
-            $query = 'UPDATE quoteline SET
-                            price    = :price,
-                            quantity   = :quantity
-                        WHERE id = :id';
+            $query = 'INSERT INTO quote (opportunity, amount) 
+                    VALUES(:opportunity, :amount)';
             $statement = $db->prepare($query);
-                $statement->bindValue(':id', $id);
-                $statement->bindValue(':price', $_POST['price']);
-                $statement->bindValue(':quantity', $_POST['quantity']);
+                $statement->bindValue(':opportunity', $_POST['opportunity']);
+                $statement->bindValue(':amount', $_POST['amount']);
             $statement->execute();
+            $newQuoteId = $pdo->lastInsertId('quote_id_seq');
+            echo "new quote id: $newQuoteId";
         }catch (Exception $ex){
             echo "Error with DB. Details: $ex";
             die();
@@ -34,8 +33,11 @@ if ($_POST) {
 
     </head>
     <body>
+    <form action="" method="post">
+        <input type="text" name="opportunity" value="<?=$id?>" class="hide">
+        <input type="text" name="amount" value="Amount">
         
-    <table id="productsTable">
+        <table id="productsTable">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -73,6 +75,9 @@ if ($_POST) {
             ?>
             </tbody>
         </table>
+        
+        <input type="submit" name="insertQuotePlusLines" value="Create New Quote with Lines">
+    </form>
 
     </body>
 </html>
