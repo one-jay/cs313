@@ -15,14 +15,14 @@ if ($_POST) {
                 $statement->bindValue(':amount', $_POST['amount']);
             $statement->execute();
             $newQuoteId = $pdo->lastInsertId('quote_id_seq');
-            echo "new quote id: $newQuoteId";
+            echo "<h1>new quote id: $newQuoteId</h1>";
         }catch (Exception $ex){
             echo "Error with DB. Details: $ex";
             die();
         }
     }
 
-    header("Location: " . $_SERVER['REQUEST_URI']);
+    //header("Location: " . $_SERVER['REQUEST_URI']);
     exit();
 }
 
@@ -57,14 +57,14 @@ if ($_POST) {
                 $rowNum = 0;
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC))
                 {
-                    $id = $row['id'];
+                    $productId = $row['id'];
                     $product = $row['name'];
                     $desc = $row['description'];
                     $listPrice = $row['listprice'];
 
                     echo 
                         '<tr>'
-                            .'<td class="hide"> <input type="text" name="id'.$rowNum.'" value="'.$id.'" readonly> </td>'
+                            .'<td class="hide"> <input type="text" name="productId'.$rowNum.'" value="'.$productId.'" readonly> </td>'
                             .'<td> <input type="text" name="product'.$rowNum.'" value="'.$product.'" readonly> </td>'
                             .'<td> <input type="text" name="listPrice'.$rowNum.'" value="'.$listPrice.'" readonly> </td>'
                             .'<td> <input type="text" name="quotePrice'.$rowNum.'"> </td>'
