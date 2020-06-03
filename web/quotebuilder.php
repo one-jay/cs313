@@ -1,6 +1,6 @@
 <?php
-require "crm-db.php";
-$db = get_db();
+//require "crm-db.php";
+//$db = get_db();
 //$id = $_GET['id']; 
 if ($_POST) {
 
