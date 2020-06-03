@@ -37,7 +37,7 @@ if ($_POST) {
 
     </head>
     <body>
-
+    <div class="related">
         <h2>Contact Details</h2>
         <table>
         <?php
@@ -70,7 +70,9 @@ if ($_POST) {
         ?>
            
         </table>
+        </div>
 
+        <div class="related">
         <h2>Update Contact</h2>
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
@@ -80,7 +82,7 @@ if ($_POST) {
             <input type="text" name="email" value="<?=$email?>">
             <input type="submit" name="updateContact" value="Update Contact">
         </form>
-
+        </div>
 
     </body>
 </html>
