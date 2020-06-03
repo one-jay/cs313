@@ -51,7 +51,7 @@ table {
   border: 1px solid #ddd;
   padding: 8px;
 }
- tr:nth-child(even){background-color: #f2e9e4;}
+ tr:nth-child(even){background-color: #c9ada7;}
  tr:hover {background-color: #ddd;}
  th {
   padding-top: 12px;
