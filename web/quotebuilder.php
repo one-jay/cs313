@@ -5,7 +5,7 @@
 if ($_POST) {
 
     // insert quote with quotelines
-    if(isset($_POST['Create New Quote with Lines'])) {
+    if(isset($_POST['insertQuotePlusLines'])) {
         try{
             $db = get_db();
             $query = 'INSERT INTO quote (opportunity, amount) 
