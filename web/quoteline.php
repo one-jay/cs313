@@ -52,8 +52,8 @@ if ($_POST) {
 
             $details = array(
                 'Quote Line ID' => $id,
-                'Quote'         => '<a href=\"quote.php?id='.$quoteId.'\">'.$quoteId.'</a>',
-                'Product'       => '<a href=\"product.php?id='.$product.'\">'.$product.'</a>',
+                'Quote'         => '<a href="quote.php?id='.$quoteId.'">'.$quoteId.'</a>',
+                'Product'       => '<a href="product.php?id='.$product.'">'.$product.'</a>',
                 'Price'         => $price,
                 'Quantity'      => $quantity
             );
