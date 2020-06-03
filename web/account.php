@@ -119,77 +119,81 @@ if ($_POST) {
             <input type="submit" name="updateAccount" value="Update Account">
         </form>
 
-        <h2>Create New Contact</h2>
-        <form action="" method="post">
-            <input type="text" name="account" value="<?=$id?>" class="hide">
-            <input type="text" name="firstname" value="First Name">
-            <input type="text" name="lastname" value="Last Name">
-            <input type="text" name="phone" value="Phone">
-            <input type="text" name="email" value="Email">
-            <input type="submit" name="insertContact" value="Create New Contact">
-        </form>
-    
-        <h2>Related Contacts:</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-        <?php
-            $statement = $db->prepare(" SELECT id as contactid, firstname, lastname, phone, email FROM contact
-                                        WHERE account = '".$id."' ");
-            $statement->execute();
+        <div class="related">
+            <h2>Related Contacts:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <?php
+                $statement = $db->prepare(" SELECT id as contactid, firstname, lastname, phone, email FROM contact
+                                            WHERE account = '".$id."' ");
+                $statement->execute();
 
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-            {
-                $contactId = $row['contactid'];
-                $firstName = $row['firstname'];
-                $lastName = $row['lastname'];
-                $phone = $row['phone'];
-                $email = $row['email'];
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                {
+                    $contactId = $row['contactid'];
+                    $firstName = $row['firstname'];
+                    $lastName = $row['lastname'];
+                    $phone = $row['phone'];
+                    $email = $row['email'];
 
-                echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
-            }
-        ?>
-        </tbody>
-        </table>
+                    echo "<tr> <td><a href=\"contact.php?id=$contactId\">$firstName</a></td> <td><a href=\"contact.php?id=$contactId\">$lastName</a></td> <td>$phone</td> <td>$email</td> </tr>";
+                }
+            ?>
+            </tbody>
+            </table>
 
-        <h2>Create New Opportunity</h2>
-        <form action="" method="post">
-            <input type="text" name="account" value="<?=$id?>" class="hide">
-            <input type="text" name="stage" value="New">
-            <input type="submit" name="insertOpp" value="Create New Opportunity">
-        </form>
+            <h2>Create New Contact</h2>
+            <form action="" method="post">
+                <input type="text" name="account" value="<?=$id?>" class="hide">
+                <input type="text" name="firstname" value="First Name">
+                <input type="text" name="lastname" value="Last Name">
+                <input type="text" name="phone" value="Phone">
+                <input type="text" name="email" value="Email">
+                <input type="submit" name="insertContact" value="Create New Contact">
+            </form>
+        </div>
 
-        <h2>Related Opportunities:</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Opportunity ID</th>
-                    <th>Stage</th>
-                </tr>
-            </thead>
-            <tbody>
-        <?php
-            $statement = $db->prepare(" SELECT id as oppid, stage FROM opportunity
-                                        WHERE account = '".$id."' ");
-            $statement->execute();
+        <div class="related">
+            <h2>Related Opportunities:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Opportunity ID</th>
+                        <th>Stage</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <?php
+                $statement = $db->prepare(" SELECT id as oppid, stage FROM opportunity
+                                            WHERE account = '".$id."' ");
+                $statement->execute();
 
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-            {
-                $oppId = $row['oppid'];
-                $stage = $row['stage'];
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                {
+                    $oppId = $row['oppid'];
+                    $stage = $row['stage'];
 
-                echo "<tr> <td><a href=\"opportunity.php?id=$oppId\">$oppId</a></td> <td>$stage</td> </tr>";
-            }
-        ?>
-        </tbody>
-        </table>
+                    echo "<tr> <td><a href=\"opportunity.php?id=$oppId\">$oppId</a></td> <td>$stage</td> </tr>";
+                }
+            ?>
+                </tbody>
+            </table>
+
+            <h3>Create New Opportunity</h3>
+            <form action="" method="post">
+                <input type="text" name="account" value="<?=$id?>" class="hide">
+                <input type="text" name="stage" value="New">
+                <input type="submit" name="insertOpp" value="Create New Opportunity">
+            </form>
+        </div>
 
     </body>
 </html>
