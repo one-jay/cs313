@@ -37,6 +37,7 @@ if ($_POST) {
 
     </head>
     <body>
+    <br>
     <div class="related">
         <h1>Contact Details</h1>
         <table>

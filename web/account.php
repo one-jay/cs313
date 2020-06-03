@@ -74,8 +74,8 @@ if ($_POST) {
 
     </head>
     <body>
+        <br>
         <div class="related">
-            <br>
             <h1>Account Details</h1>
             <table>
             <?php

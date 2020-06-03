@@ -4,7 +4,7 @@ $db = get_db();
 $id = $_GET['id']; 
 if ($_POST) {
 
-    // update contact
+    // update quoteLine
     if(isset($_POST['updateQuoteLine'])) {
         try{
             $db = get_db();

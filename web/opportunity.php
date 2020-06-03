@@ -47,6 +47,7 @@ if ($_POST) {
 
     </head>
     <body>
+    <br>
     <div class="related">
 
         <h1>Opportunity Details</h1>

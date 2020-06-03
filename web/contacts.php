@@ -8,6 +8,7 @@
 
     </head>
     <body>
+        <br>
         <h2>Contacts:</h2>
 
         <table id="contactsTable">
