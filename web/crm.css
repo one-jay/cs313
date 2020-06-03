@@ -6,7 +6,8 @@ main{
     margin: 0 auto;
 }
 .related{
-    background-color: powderblue;
+    background-color: #eee;
+    margin: 1em;
 }
 h2{
     margin-top: 2em;
@@ -44,7 +45,7 @@ li a:hover {
 /* table styling */
 table {
   border-collapse: collapse;
-  width: 90%;
+  width: 100%;
 }
  td,  th, input {
   border: 1px solid #ddd;
