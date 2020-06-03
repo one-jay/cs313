@@ -63,7 +63,7 @@ if ($_POST) {
             }
             $details = array(
                 'Opportunity ID'    => $id,
-                'Account'  => $account,
+                'Account'  => '<a href="account.php?id='.$account.'">'.$account.'</a>',
                 'Stage'        => $stage
             );
             foreach($details as $k => $v){

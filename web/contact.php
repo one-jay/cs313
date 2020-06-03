@@ -48,6 +48,7 @@ if ($_POST) {
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
+                $account = $row['account'];
                 $firstname = $row['firstname'];
                 $lastname = $row['lastname'];
                 $phone = $row['phone'];
@@ -56,6 +57,7 @@ if ($_POST) {
 
             $details = array(
                 'Contact ID'    => $id,
+                'Account' => '<a href="account.php?id='.$account.'">'.$account.'</a>',
                 'First Name'  => $firstname,
                 'Last Name'        => $lastname,
                 'Phone'         => $phone,

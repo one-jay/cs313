@@ -4,7 +4,7 @@ $db = get_db();
 $id = $_GET['id'];
 if ($_POST) {
 
-// update opportunity
+// update quote
 if(isset($_POST['updateQuote'])) {
     try{
         $db = get_db();
@@ -65,7 +65,7 @@ exit();
         }
         $details = array(
             'Quote ID'    => $id,
-            'Opportunity'  => $opportunity,
+            'Opportunity'  => '<a href="opportunity.php?id='.$opportunity.'">'.$opportunity.'</a>',
             'Amount'        => $amount
         );
         foreach($details as $k => $v){
