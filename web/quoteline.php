@@ -44,7 +44,7 @@ if ($_POST) {
 
             while ($row = $statement->fetch(PDO::FETCH_ASSOC))
             {
-                $quote = $row['quote'];
+                $quoteId = $row['quote'];
                 $product = $row['product'];
                 $price = $row['price'];
                 $quantity = $row['quantity'];
@@ -52,8 +52,8 @@ if ($_POST) {
 
             $details = array(
                 'Quote Line ID' => $id,
-                'Quote'         => $quote,
-                'Product'       => $product,
+                'Quote'         => '<a href=\"quote.php?id='.$quoteId.'\">'.$quoteId.'</a>',
+                'Product'       => '<a href=\"product.php?id='.$product.'\">'.$product.'</a>',
                 'Price'         => $price,
                 'Quantity'      => $quantity
             );
