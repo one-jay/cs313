@@ -64,8 +64,8 @@ exit();
             $amount = $row['amount'];
         }
         $details = array(
-            'Quote ID'    => $id,
-            'Opportunity'  => '<a href="opportunity.php?id='.$opportunity.'">'.$opportunity.'</a>',
+            'Quote ID'      => $id,
+            'Opportunity'   => '<a href="opportunity.php?id='.$opportunity.'">'.$opportunity.'</a>',
             'Amount'        => $amount
         );
         foreach($details as $k => $v){

@@ -53,7 +53,7 @@ table {
   padding: 8px;
 }
  tr:nth-child(even){background-color: #dee2e6;}
- tr:hover {background-color: #f0efeb;}
+ tr:hover {background-color: #f8f9fa;}
  th {
   padding-top: 12px;
   padding-bottom: 12px;
