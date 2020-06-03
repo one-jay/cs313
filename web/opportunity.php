@@ -119,8 +119,8 @@ if ($_POST) {
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Quote Builder</button>
             <!-- Modal -->
-            <div class="modal fade modal-lg" id="myModal" role="dialog">
-                <div class="modal-dialog">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog  modal-lg">
                     <!-- Modal content-->
                     <div class="modal-content">
                         <div class="modal-header">
