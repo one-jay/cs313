@@ -45,6 +45,7 @@ li a:hover {
 table {
   border-collapse: collapse;
   width: 100%;
+  padding: 0 .5em;
 }
  td,  th, input {
   border: 1px solid #ddd;

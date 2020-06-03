@@ -74,50 +74,51 @@ if ($_POST) {
 
     </head>
     <body>
+        <div class="related">
+            <h1>Account Details</h1>
+            <table>
+            <?php
+                $statement = $db->prepare(" SELECT * FROM account 
+                                            WHERE id = '".$id."'
+                                            LIMIT 1 ");
+                $statement->execute();
 
-        <h1>Account Details</h1>
-        <table>
-        <?php
-            $statement = $db->prepare(" SELECT * FROM account 
-                                        WHERE id = '".$id."'
-                                        LIMIT 1 ");
-            $statement->execute();
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                {
+                    $name = $row['name'];
+                    $street = $row['street'];
+                    $city = $row['city'];
+                    $state = $row['state'];
+                    $zip = $row['zip'];
+                }
 
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-            {
-                $name = $row['name'];
-                $street = $row['street'];
-                $city = $row['city'];
-                $state = $row['state'];
-                $zip = $row['zip'];
-            }
+                $details = array(
+                    'Account ID'    => $id,
+                    'Account Name'  => $name,
+                    'Street'        => $street,
+                    'City'          => $city,
+                    'State'         => $state,
+                    'Zip'           => $zip
+                );
 
-            $details = array(
-                'Account ID'    => $id,
-                'Account Name'  => $name,
-                'Street'        => $street,
-                'City'          => $city,
-                'State'         => $state,
-                'Zip'           => $zip
-            );
+                foreach($details as $k => $v){
+                    echo "<tr><th>$k</th><td>$v</td></tr>";
+                }
+            ?>
+            
+            </table>
 
-            foreach($details as $k => $v){
-                echo "<tr><th>$k</th><td>$v</td></tr>";
-            }
-        ?>
-           
-        </table>
-
-        <h3>Update Account</h3>
-        <form action="" method="post">
-            <!-- <input type="text" name="id" value="<?=$id?>"> -->
-            <input type="text" name="name" value="<?=$name?>">
-            <input type="text" name="street" value="<?=$street?>">
-            <input type="text" name="city" value="<?=$city?>">
-            <input type="text" name="state" value="<?=$state?>">
-            <input type="text" name="zip" value="<?=$zip?>">
-            <input type="submit" name="updateAccount" value="Update Account">
-        </form>
+            <h3>Update Account</h3>
+            <form action="" method="post">
+                <!-- <input type="text" name="id" value="<?=$id?>"> -->
+                <input type="text" name="name" value="<?=$name?>">
+                <input type="text" name="street" value="<?=$street?>">
+                <input type="text" name="city" value="<?=$city?>">
+                <input type="text" name="state" value="<?=$state?>">
+                <input type="text" name="zip" value="<?=$zip?>">
+                <input type="submit" name="updateAccount" value="Update Account">
+            </form>
+        </div>
 
         <div class="related">
             <h2>Related Contacts:</h2>
