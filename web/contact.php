@@ -38,7 +38,7 @@ if ($_POST) {
     </head>
     <body>
     <div class="related">
-        <h2>Contact Details</h2>
+        <h1>Contact Details</h1>
         <table>
         <?php
             $statement = $db->prepare(" SELECT * FROM contact 
@@ -70,10 +70,8 @@ if ($_POST) {
         ?>
            
         </table>
-        </div>
-
-        <div class="related">
-        <h2>Update Contact</h2>
+        
+        <h3>Update Contact</h3>
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
             <input type="text" name="firstname" value="<?=$firstname?>">

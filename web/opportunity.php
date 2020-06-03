@@ -48,9 +48,8 @@ if ($_POST) {
     </head>
     <body>
     <div class="related">
-        <h1>Opportunity: <?=$id?> </h1>
 
-        <h2>Opportunity Details</h2>
+        <h1>Opportunity Details</h1>
         <table>
         <?php
             $statement = $db->prepare(" SELECT * FROM opportunity 
@@ -73,7 +72,7 @@ if ($_POST) {
         ?>
         </table>
 
-        <h2>Update Opportunity</h2>
+        <h3>Update Opportunity</h3>
         <form action="" method="post">
             <!-- <input type="text" name="id" value="<?=$id?>"> -->
             <input type="text" name="stage" value="<?=$stage?>">
@@ -107,7 +106,7 @@ if ($_POST) {
             </tbody>
             </table>
 
-            <h2>Create New Quote</h2>
+            <h3>Create New Quote</h3>
             <form action="" method="post">
                 <input type="text" name="opportunity" value="<?=$id?>" class="hide">
                 <input type="text" name="amount" value="Amount">
