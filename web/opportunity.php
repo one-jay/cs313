@@ -115,7 +115,7 @@ if ($_POST) {
             </form>
         </div>
 
-        <div class="container">
+        <!-- <div class="container">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Quote Builder</button>
             <!-- Modal -->
@@ -136,7 +136,7 @@ if ($_POST) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </body>
 </html>

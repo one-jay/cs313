@@ -5,17 +5,19 @@
 if ($_POST) {
 
     // insert quote with quotelines
-    if(isset($_POST['insertQuotePlusLines'])) {
+    if(isset($_POST['insertQuoteLines'])) {
         try{
             $db = get_db();
-            $query = 'INSERT INTO quote (opportunity, amount) 
-                    VALUES(:opportunity, :amount)';
+            $query = 'INSERT INTO quoteline (quote, product, price, quantity) 
+                    VALUES(:quote, :product, :price, :quantity)';
             $statement = $db->prepare($query);
-                $statement->bindValue(':opportunity', $_POST['opportunity']);
-                $statement->bindValue(':amount', $_POST['amount']);
+                $statement->bindValue(':quote', $id);
+                $statement->bindValue(':product', $_POST['product0']);
+                $statement->bindValue(':price', $_POST['quoteprice0']);
+                $statement->bindValue(':quantity', $_POST['quantity0']);
             $statement->execute();
-            $newQuoteId = $pdo->lastInsertId('quote_id_seq');
-            echo "<h1>new quote id: $newQuoteId</h1>";
+            // $newQuoteId = $pdo->lastInsertId('quote_id_seq');
+            // echo "<h1>new quote id: $newQuoteId</h1>";
         }catch (Exception $ex){
             echo "Error with DB. Details: $ex";
             die();
@@ -33,10 +35,13 @@ if ($_POST) {
 
     </head>
     <body>
+    
     <form action="" method="post">
-        <input type="text" name="opportunity" value="<?=$id?>">
-        <input type="text" name="amount" value="Amount">
-        
+        <input type="text" name="quote" value="<?=$id?>" class="hide">
+        <!-- <input type="text" name="product" value="Product">
+        <input type="text" name="price" value="Price">
+        <input type="text" name="quantity" value="quantity"> -->
+    
         <!-- <table id="productsTable">
             <thead>
                 <tr>
@@ -76,7 +81,7 @@ if ($_POST) {
             </tbody>
         </table> -->
         
-        <input type="submit" name="insertQuotePlusLines" value="Create New Quote with Lines">
+        <input type="submit" name="insertQuoteLines" value="Add Products to Quote">
     </form>
 
     </body>

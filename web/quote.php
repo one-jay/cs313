@@ -49,80 +49,105 @@ exit();
 
 </head>
 <body>
-    <h1>Quote: <?=$id?> </h1>
-
-    <h2>Quote Details</h2>
-    <table>
-    <?php
-        $statement = $db->prepare(" SELECT * FROM quote 
-                                    WHERE id = '".$id."'
-                                    LIMIT 1 ");
-        $statement->execute();
-
-        while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
-            $opportunity = $row['opportunity'];
-            $amount = $row['amount'];
-        }
-        $details = array(
-            'Quote ID'      => $id,
-            'Opportunity'   => '<a href="opportunity.php?id='.$opportunity.'">'.$opportunity.'</a>',
-            'Amount'        => $amount
-        );
-        foreach($details as $k => $v){
-            echo "<tr><th>$k</th><td>$v</td></tr>";
-        }
-    ?>
-    </table>
-
-    <h2>Update Quote</h2>
-    <form action="" method="post">
-        <!-- <input type="text" name="id" value="<?=$id?>"> -->
-        <input type="text" name="amount" value="<?=$amount?>">
-        <input type="submit" name="updateQuote" value="Update Quote">
-    </form>
-
-    <h2>Create New Quote Line</h2>
-    <form action="" method="post">
-        <input type="text" name="quote" value="<?=$id?>" class="hide">
-        <input type="text" name="product" value="Product">
-        <input type="text" name="price" value="Price">
-        <input type="text" name="quantity" value="quantity">
-        <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
-    </form>
-
-        <h2> Quote Lines:</h2>
+    <br>
+    <div class="related">
+        <h2>Quote Details</h2>
         <table>
-            <thead>
-                <tr>
-                    <th>Quote Line ID</th>
-                    <th>Product</th>
-                    <th>List Price</th>
-                    <th>Quote Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
         <?php
-            $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.id as productid, product.name, product.listprice, price, quantity
-                                        FROM quoteline
-                                        JOIN product ON quoteline.product = product.id
-                                        WHERE quote = '".$id."' ");
+            $statement = $db->prepare(" SELECT * FROM quote 
+                                        WHERE id = '".$id."'
+                                        LIMIT 1 ");
             $statement->execute();
 
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC))
-            {
-                $quoteLineId = $row['quotelineid'];
-                $product = $row['name'];
-                $productId = $row['productid'];
-                $listPrice = $row['listprice'];
-                $price = $row['price'];
-                $quantity = $row['quantity'];
-
-                echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listPrice</td> <td>$price</td> <td>$quantity</td>  </tr>";
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)){
+                $opportunity = $row['opportunity'];
+                $amount = $row['amount'];
+            }
+            $details = array(
+                'Quote ID'      => $id,
+                'Opportunity'   => '<a href="opportunity.php?id='.$opportunity.'">'.$opportunity.'</a>',
+                'Amount'        => $amount
+            );
+            foreach($details as $k => $v){
+                echo "<tr><th>$k</th><td>$v</td></tr>";
             }
         ?>
-        </tbody>
         </table>
 
+        <h2>Update Quote</h2>
+        <form action="" method="post">
+            <!-- <input type="text" name="id" value="<?=$id?>"> -->
+            <input type="text" name="amount" value="<?=$amount?>">
+            <input type="submit" name="updateQuote" value="Update Quote">
+        </form>
+    </div>
+
+    <div class="container">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Quote Builder</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog  modal-lg">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Quote Builder</h4>
+                        </div>
+                        <div class="modal-body">
+                            <?php require "quotebuilder.php";?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="related">
+        <h2>Create New Quote Line</h2>
+        <form action="" method="post">
+            <input type="text" name="quote" value="<?=$id?>" class="hide">
+            <input type="text" name="product" value="Product">
+            <input type="text" name="price" value="Price">
+            <input type="text" name="quantity" value="quantity">
+            <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
+        </form>
+
+            <h2> Quote Lines:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Quote Line ID</th>
+                        <th>Product</th>
+                        <th>List Price</th>
+                        <th>Quote Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+            <?php
+                $statement = $db->prepare(" SELECT quoteline.id as quotelineid, product.id as productid, product.name, product.listprice, price, quantity
+                                            FROM quoteline
+                                            JOIN product ON quoteline.product = product.id
+                                            WHERE quote = '".$id."' ");
+                $statement->execute();
+
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC))
+                {
+                    $quoteLineId = $row['quotelineid'];
+                    $product = $row['name'];
+                    $productId = $row['productid'];
+                    $listPrice = $row['listprice'];
+                    $price = $row['price'];
+                    $quantity = $row['quantity'];
+
+                    echo "<tr> <td><a href=\"quoteline.php?id=$quoteLineId\">$quoteLineId</a></td> <td><a href=\"product.php?id=$productId\">$product</td> <td>$listPrice</td> <td>$price</td> <td>$quantity</td>  </tr>";
+                }
+            ?>
+            </tbody>
+            </table>
+        </div>
     </body>
 </html>
