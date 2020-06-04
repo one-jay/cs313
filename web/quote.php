@@ -46,7 +46,7 @@ if(isset($_POST['insertQuoteLines'])) {
         $i = 0;
         $query = 'INSERT INTO quoteline (quote, product, price, quantity) VALUES ';
                 foreach($_POST as $key => $value){
-                    $query.= '(:quote'.$i.','
+                    $query.= '(:quote,'
                             .':product'.$i.','
                             .':price'.$i.','
                             .':quantity'.$i.'),';
