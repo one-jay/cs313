@@ -148,10 +148,10 @@ exit();
 
                                         echo 
                                             '<tr>'
-                                                .'<td class="hide"> <input type="text" name="productId'.$rowNum.'" value="'.$productId.'" readonly> </td>'
+                                                .'<td class="hide"> <input type="text" name="productid'.$rowNum.'" value="'.$productId.'" readonly> </td>'
                                                 .'<td> <input type="text" name="product'.$rowNum.'" value="'.$product.'" readonly> </td>'
-                                                .'<td> <input type="text" name="listPrice'.$rowNum.'" value="'.$listPrice.'" readonly> </td>'
-                                                .'<td> <input type="text" name="quotePrice'.$rowNum.'"> </td>'
+                                                .'<td> <input type="text" name="listprice'.$rowNum.'" value="'.$listPrice.'" readonly> </td>'
+                                                .'<td> <input type="text" name="quoteprice'.$rowNum.'"> </td>'
                                                 .'<td> <input type="text" name="quantity'.$rowNum.'"> </td>'
                                             .'</tr>';
                                         $rowNum++;
