@@ -42,7 +42,7 @@ if ($_POST) {
         <input type="text" name="price" value="Price">
         <input type="text" name="quantity" value="quantity"> -->
     
-        <!-- <table id="productsTable">
+        <table id="productsTable">
             <thead>
                 <tr>
                     <th>Product Name</th>
@@ -79,7 +79,7 @@ if ($_POST) {
                 }
             ?>
             </tbody>
-        </table> -->
+        </table>
         
         <input type="submit" name="insertQuoteLines" value="Add Products to Quote">
     </form>
