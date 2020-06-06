@@ -54,7 +54,7 @@ if(isset($_POST['insertQuoteLines'])) {
                     $i++;
                     
                 };
-                echo $query;
+                echo '<br>'.$query.'<br>'.$i.'<br>';
         $statement = $db->prepare($query);
 
         $statement->bindValue(':quote', $id);
