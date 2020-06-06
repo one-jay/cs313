@@ -188,14 +188,14 @@ exit();
         </form>
 
             <h2> Quote Lines:</h2>
-            <table>
+            <table id="quoteLinesTable">
                 <thead>
                     <tr>
-                        <th>Quote Line ID</th>
-                        <th>Product</th>
-                        <th>List Price</th>
-                        <th>Quote Price</th>
-                        <th>Quantity</th>
+                        <th onclick="sortTable(quoteLinesTable,0)">Quote Line ID</th>
+                        <th onclick="sortTable(quoteLinesTable,1)">Product</th>
+                        <th onclick="sortTable(quoteLinesTable,2)">List Price</th>
+                        <th onclick="sortTable(quoteLinesTable,3)">Quote Price</th>
+                        <th onclick="sortTable(quoteLinesTable,4)">Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -221,5 +221,9 @@ exit();
             </tbody>
             </table>
         </div>
+
+        <script>
+            var quoteLinesTable = document.getElementById("quoteLinesTable");
+        </script>
     </body>
 </html>
