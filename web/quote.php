@@ -114,7 +114,19 @@ exit();
         </form>
     </div>
 
-    <div class="container">
+        
+
+    <div class="related">
+        <h2>Create New Quote Line</h2>
+        <form action="" method="post">
+            <input type="text" name="quote" value="<?=$id?>" class="hide">
+            <input type="text" name="product" value="Product">
+            <input type="text" name="price" value="Price">
+            <input type="text" name="quantity" value="quantity">
+            <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
+        </form>
+
+        <div class="container">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Quote Builder</button>
             <!-- Modal -->
@@ -176,16 +188,6 @@ exit();
                 </div>
             </div>
         </div>
-
-    <div class="related">
-        <h2>Create New Quote Line</h2>
-        <form action="" method="post">
-            <input type="text" name="quote" value="<?=$id?>" class="hide">
-            <input type="text" name="product" value="Product">
-            <input type="text" name="price" value="Price">
-            <input type="text" name="quantity" value="quantity">
-            <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
-        </form>
 
             <h2> Quote Lines:</h2>
             <table id="quoteLinesTable">
