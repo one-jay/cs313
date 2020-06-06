@@ -44,17 +44,15 @@ if(isset($_POST['insertQuoteLines'])) {
     try{
         $db = get_db();
         print_r($_POST);
-        $i = 0;
+        
         $query = 'INSERT INTO quoteline (quote, product, price, quantity) VALUES ';
-                foreach($_POST as $key => $value){
-                    $query.= '(:quote,'
-                            .':product'.$i.','
-                            .':price'.$i.','
-                            .':quantity'.$i.'),';
-                    $i++;
-                    
-                };
-                echo '<br>'.$query.'<br>'.$i.'<br>';
+            for($i = 0; $i < (count($_POST)-2) / (4+1) ; $i++){
+                $query.= '(:quote,'
+                        .':product'.$i.','
+                        .':price'.$i.','
+                        .':quantity'.$i.'),';
+            };
+            echo '<br>'.$query.'<br> i: '.$i.'<br>';
         $statement = $db->prepare($query);
 
         $statement->bindValue(':quote', $id);
