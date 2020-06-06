@@ -44,15 +44,17 @@ if(isset($_POST['insertQuoteLines'])) {
     try{
         $db = get_db();
         print_r($_POST);
-        
+        $tableColumns = 4;
         $query = 'INSERT INTO quoteline (quote, product, price, quantity) VALUES ';
-            for($i = 0; $i < (count($_POST)-2) / (4+1) ; $i++){
+            for($i = 0; $i < (count($_POST)-2) / ($tableColumns+1) ; $i++){
                 $query.= '(:quote,'
                         .':product'.$i.','
                         .':price'.$i.','
                         .':quantity'.$i.'),';
             };
-            echo '<br>'.$query.'<br> i: '.$i.'<br>';
+            echo '<br>'.$query.'<br>';
+        $query = rtrim($query, ',');
+            echo '<br>'.$query.'<br>';
         $statement = $db->prepare($query);
 
         $statement->bindValue(':quote', $id);
@@ -63,7 +65,6 @@ if(isset($_POST['insertQuoteLines'])) {
         }
         $statement->execute();
         // $newQuoteId = $pdo->lastInsertId('quote_id_seq');
-        // echo "<h1>new quote id: $newQuoteId</h1>";
     }catch (Exception $ex){
         echo "Error with DB. Details: $ex";
         die();
@@ -128,10 +129,6 @@ exit();
                         <div class="modal-body">
                         <form action="" method="post">
                             <input type="text" name="quote" value="<?=$id?>" class="hide">
-                            <!-- <input type="text" name="product" value="Product">
-                            <input type="text" name="price" value="Price">
-                            <input type="text" name="quantity" value="quantity"> -->
-                        
                             <table id="productsTable">
                                 <thead>
                                     <tr>
@@ -140,7 +137,6 @@ exit();
                                         <th>Quote Price</th>
                                         <th>Quantity</th>
                                     </tr>
-                                    
                                 </thead>
                                 <tbody>
                                 <?php
@@ -170,7 +166,6 @@ exit();
                                 ?>
                                 </tbody>
                             </table>
-                            
                             <input type="submit" name="insertQuoteLines" value="Add Products to Quote">
                         </form>
                         </div>
