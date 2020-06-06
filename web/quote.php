@@ -56,13 +56,12 @@ if(isset($_POST['insertQuoteLines'])) {
                 };
                 echo $query;
         $statement = $db->prepare($query);
-        $j = 0;
-        foreach($_POST as $key => $value){
-            $statement->bindValue(':quote', $id);
+
+        $statement->bindValue(':quote', $id);
+        for($j = 0; $j <= $i; $j++){
             $statement->bindValue(':product'.$j, $_POST['productid'.$j]);
             $statement->bindValue(':price'.$j, $_POST['quoteprice'.$j]);
             $statement->bindValue(':quantity'.$j, $_POST['quantity'.$j]);
-            $j++;
         }
         $statement->execute();
         // $newQuoteId = $pdo->lastInsertId('quote_id_seq');

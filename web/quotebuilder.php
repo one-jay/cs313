@@ -4,7 +4,7 @@
 //$id = $_GET['id']; 
 if ($_POST) {
 
-    // insert quote with quotelines
+    // insert quotelines
     if(isset($_POST['insertQuoteLines'])) {
         try{
             $db = get_db();
