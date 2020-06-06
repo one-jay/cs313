@@ -105,9 +105,10 @@ function debugQuery(){
 
 
         <script>
-            function sortTable(t,n) {
+            function sortTable(t,n,a) {
                 var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
                 table = t;
+                sortAlphabetically = a; //bool, if false, sort numerically
                 switching = true;
                 // Set the sorting direction to ascending:
                 dir = "asc"; 
@@ -120,27 +121,42 @@ function debugQuery(){
                     /* Loop through all table rows (except the
                     first, which contains table headers): */
                     for (i = 1; i < (rows.length - 1); i++) {
-                    // Start by saying there should be no switching:
-                    shouldSwitch = false;
-                    /* Get the two elements you want to compare,
-                    one from current row and one from the next: */
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    /* Check if the two rows should switch place,
-                    based on the direction, asc or desc: */
-                    if (dir == "asc") {
-                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        // If so, mark as a switch and break the loop:
-                        shouldSwitch = true;
-                        break;
+                        // Start by saying there should be no switching:
+                        shouldSwitch = false;
+                        /* Get the two elements you want to compare,
+                        one from current row and one from the next: */
+                        x = rows[i].getElementsByTagName("TD")[n];
+                        y = rows[i + 1].getElementsByTagName("TD")[n];
+
+                        if(sortAlphabetically){
+                            /* Check if the two rows should switch place,
+                            based on the direction, asc or desc: */
+                            if (dir == "asc") {
+                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                                }
+                            } else if (dir == "desc") {
+                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                // If so, mark as a switch and break the loop:
+                                shouldSwitch = true;
+                                break;
+                                }
+                            }
+                        }else{ //sort numerically
+                            if (dir == "asc") {
+                                if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            } else if (dir == "desc") {
+                                if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            }
                         }
-                    } else if (dir == "desc") {
-                        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        // If so, mark as a switch and break the loop:
-                        shouldSwitch = true;
-                        break;
-                        }
-                    }
                     }
                     if (shouldSwitch) {
                     /* If a switch has been marked, make the switch
@@ -159,6 +175,8 @@ function debugQuery(){
                     }
                 }
             }
+
+            
 
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
