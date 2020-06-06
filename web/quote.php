@@ -193,11 +193,11 @@ exit();
             <table id="quoteLinesTable">
                 <thead>
                     <tr>
-                        <th onclick="sortTable(quoteLinesTable,0)">Quote Line ID</th>
-                        <th onclick="sortTable(quoteLinesTable,1)">Product</th>
-                        <th onclick="sortTable(quoteLinesTable,2)">List Price</th>
-                        <th onclick="sortTable(quoteLinesTable,3)">Quote Price</th>
-                        <th onclick="sortTable(quoteLinesTable,4)">Quantity</th>
+                        <th onclick="sortTable(quoteLinesTable,0,true)">Quote Line ID</th>
+                        <th onclick="sortTable(quoteLinesTable,1,true)">Product</th>
+                        <th onclick="sortTable(quoteLinesTable,2,false)">List Price</th>
+                        <th onclick="sortTable(quoteLinesTable,3,false)">Quote Price</th>
+                        <th onclick="sortTable(quoteLinesTable,4,false)">Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
