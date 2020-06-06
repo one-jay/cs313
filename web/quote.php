@@ -126,7 +126,7 @@ exit();
             <input type="submit" name="insertQuoteLine" value="Create New Quote Line">
         </form>
 
-        <div class="container">
+        <div class="container" style="display:inline;">
             <!-- Trigger the modal with a button -->
             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Quote Builder</button>
             <!-- Modal -->
