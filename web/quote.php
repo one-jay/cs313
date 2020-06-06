@@ -56,7 +56,7 @@ if(isset($_POST['insertQuoteLines'])) {
         $statement = $db->prepare($query);
 
         $statement->bindValue(':quote', $id);
-        for($j = 0; $j <= $i; $j++){
+        for($j = 0; $j < $i; $j++){
             $statement->bindValue(':product'.$j, $_POST['productid'.$j]);
             $statement->bindValue(':price'.$j, $_POST['quoteprice'.$j]);
             $statement->bindValue(':quantity'.$j, $_POST['quantity'.$j]);
