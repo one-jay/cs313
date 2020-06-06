@@ -61,6 +61,7 @@ if(isset($_POST['insertQuoteLines'])) {
             $statement->bindValue(':price'.$j, $_POST['quoteprice'.$j]);
             $statement->bindValue(':quantity'.$j, $_POST['quantity'.$j]);
         }
+        echo $statement;
         $statement->execute();
         // $newQuoteId = $pdo->lastInsertId('quote_id_seq');
         // echo "<h1>new quote id: $newQuoteId</h1>";
